@@ -1,0 +1,41 @@
+.emoji-wrapper {
+  /*width: 100%;
+  text-align: center;
+  height: 100px;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-top: -42px;*/
+}
+
+
+.emoji-wrapper:after{
+  bottom: 0;
+  background: linear-gradient(to top, rgba(255,255,255,1) 0%,rgba(255,255,255,1) 35%,rgba(255,255,255,0) 100%);
+}
+
+.emoji {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: .3s;
+  font-size: 40px;
+}
+
+.emoji > svg {
+  margin: 15px 0;
+  width: 45px;
+  height: 70px;
+  flex-shrink: 0;
+}
+
+#star1:checked ~ .emoji-wrapper > .emoji { transform: translateY(-100px); }
+#star2:checked ~ .emoji-wrapper > .emoji { transform: translateY(-200px); }
+#star3:checked ~ .emoji-wrapper > .emoji { transform: translateY(-300px); }
+#star4:checked ~ .emoji-wrapper > .emoji { transform: translateY(-400px); }
+#star5:checked ~ .emoji-wrapper > .emoji { transform: translateY(-500px); }
+
+.star0 {
+  filter: grayscale(100%);
+}

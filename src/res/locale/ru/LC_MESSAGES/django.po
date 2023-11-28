@@ -1,0 +1,742 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-05-26 13:27+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\app\main\admin.py:92
+msgid "Shown Poster"
+msgstr ""
+
+#: .\app\main\admin.py:99
+msgid "Shown Background"
+msgstr ""
+
+#: .\app\main\forms.py:11
+msgid "Введите текст"
+msgstr ""
+
+#: .\app\main\forms.py:17
+msgid "Логин"
+msgstr ""
+
+#: .\app\main\forms.py:18
+msgid "Пароль"
+msgstr ""
+
+#: .\app\main\forms.py:25 .\app\main\forms.py:58
+msgid "Введите свой Email"
+msgstr ""
+
+#: .\app\main\forms.py:30
+msgid "Придумайте логин"
+msgstr ""
+
+#: .\app\main\forms.py:35
+msgid "Придумайте пароль"
+msgstr ""
+
+#: .\app\main\forms.py:40
+msgid "Подтвердите пароль"
+msgstr ""
+
+#: .\app\main\models.py:19 .\app\main\models.py:39 .\app\main\models.py:65
+msgid "Name"
+msgstr ""
+
+#: .\app\main\models.py:20 .\app\main\models.py:40
+msgid "Surname"
+msgstr ""
+
+#: .\app\main\models.py:21 .\app\main\models.py:237 .\app\main\modelsGame.py:22
+#: .\app\main\modelsGame.py:57 .\app\main\modelsGame.py:167
+msgid "Poster"
+msgstr ""
+
+#: .\app\main\models.py:22
+msgid "Birthday"
+msgstr ""
+
+#: .\app\main\models.py:41 .\app\main\models.py:66 .\app\main\models.py:99
+#: .\app\main\models.py:116
+msgid "Image"
+msgstr ""
+
+#: .\app\main\models.py:87
+msgid "A actor and a character to Movie"
+msgstr ""
+
+#: .\app\main\models.py:88
+msgid "Actors and Characters to Movies"
+msgstr ""
+
+#: .\app\main\models.py:90
+msgid "Actor"
+msgstr ""
+
+#: .\app\main\models.py:91
+msgid "Character"
+msgstr ""
+
+#: .\app\main\models.py:92 .\app\main\models.py:141 .\app\main\models.py:151
+#: .\app\main\models.py:409 .\app\main\models.py:426 .\app\main\models.py:440
+msgid "Movie"
+msgstr ""
+
+#: .\app\main\models.py:98 .\app\main\models.py:115 .\app\main\models.py:158
+#: .\app\main\models.py:407 .\app\main\models.py:408 .\app\main\models.py:432
+#: .\app\main\modelsGame.py:12 .\app\main\modelsGame.py:39
+#: .\app\main\modelsGame.py:87 .\app\main\modelsGame.py:150
+#: .\app\main\templates\inc\_dialog_alttitle.html:2
+msgid "Title"
+msgstr ""
+
+#: .\app\main\models.py:117 .\app\main\modelsGame.py:56
+msgid "URL Site"
+msgstr ""
+
+#: .\app\main\models.py:118
+msgid "URL Twitter"
+msgstr ""
+
+#: .\app\main\models.py:133
+msgid "Streaming Release"
+msgstr ""
+
+#: .\app\main\models.py:134
+msgid "DVD Release"
+msgstr ""
+
+#: .\app\main\models.py:135
+msgid "URL Streaming Netflix"
+msgstr ""
+
+#: .\app\main\models.py:136
+msgid "URL DVD Netflix"
+msgstr ""
+
+#: .\app\main\models.py:137
+msgid "URL Streaming Amazon"
+msgstr ""
+
+#: .\app\main\models.py:138
+msgid "URL DVD Amazon"
+msgstr ""
+
+#: .\app\main\models.py:139
+msgid "URL Streaming Microsoft"
+msgstr ""
+
+#: .\app\main\models.py:140
+msgid "URL Streaming Youtube"
+msgstr ""
+
+#: .\app\main\models.py:152
+msgid "Movies"
+msgstr ""
+
+#: .\app\main\models.py:161 .\app\main\modelsGame.py:14
+#: .\app\main\modelsGame.py:38
+msgid "Franchise"
+msgstr ""
+
+#: .\app\main\models.py:166 .\app\main\modelsGame.py:18
+#: .\app\main\templates\main\movie_detail.html:903
+msgid "Licensor"
+msgstr ""
+
+#: .\app\main\models.py:169 .\app\main\templates\main\movie_detail.html:908
+msgid "Production"
+msgstr ""
+
+#: .\app\main\models.py:172 .\app\main\templates\main\movie_detail.html:918
+msgid "Distributor"
+msgstr ""
+
+#: .\app\main\models.py:176 .\app\main\models.py:197
+msgid "Film"
+msgstr ""
+
+#: .\app\main\models.py:177
+msgid "Film Series"
+msgstr ""
+
+#: .\app\main\models.py:178
+msgid "Short Film"
+msgstr ""
+
+#: .\app\main\models.py:179
+msgid "Fan Film"
+msgstr ""
+
+#: .\app\main\models.py:183 .\app\main\models.py:198
+msgid "Animated"
+msgstr ""
+
+#: .\app\main\models.py:184
+msgid "Animated Series"
+msgstr ""
+
+#: .\app\main\models.py:185
+msgid "Short Animated"
+msgstr ""
+
+#: .\app\main\models.py:186
+msgid "Fan Animated"
+msgstr ""
+
+#: .\app\main\models.py:189 .\app\main\models.py:208
+msgid "Stage"
+msgstr ""
+
+#: .\app\main\models.py:190
+msgid "Documentary"
+msgstr ""
+
+#: .\app\main\models.py:191
+msgid "Parody"
+msgstr ""
+
+#: .\app\main\models.py:192
+msgid "Story"
+msgstr ""
+
+#: .\app\main\models.py:194 .\app\main\models.py:438
+#: .\app\main\modelsGame.py:15 .\app\main\modelsGame.py:55
+msgid "Type"
+msgstr ""
+
+#: .\app\main\models.py:199
+msgid "Series"
+msgstr ""
+
+#: .\app\main\models.py:200
+msgid "Short"
+msgstr ""
+
+#: .\app\main\models.py:201
+msgid "Fan"
+msgstr ""
+
+#: .\app\main\models.py:205
+msgid "Theatrical"
+msgstr ""
+
+#: .\app\main\models.py:206
+msgid "Television"
+msgstr ""
+
+#: .\app\main\models.py:207
+msgid "Direct"
+msgstr ""
+
+#: .\app\main\models.py:209
+msgid "Streaming"
+msgstr ""
+
+#: .\app\main\models.py:210
+msgid "Release Type"
+msgstr ""
+
+#: .\app\main\models.py:213 .\app\main\modelsGame.py:152
+msgid "Action"
+msgstr ""
+
+#: .\app\main\models.py:214 .\app\main\modelsGame.py:153
+msgid "Adventure"
+msgstr ""
+
+#: .\app\main\models.py:215 .\app\main\modelsGame.py:154
+msgid "Comedy"
+msgstr ""
+
+#: .\app\main\models.py:216 .\app\main\modelsGame.py:155
+msgid "Crime"
+msgstr ""
+
+#: .\app\main\models.py:217 .\app\main\modelsGame.py:156
+msgid "Drama"
+msgstr ""
+
+#: .\app\main\models.py:218 .\app\main\modelsGame.py:157
+msgid "Fantasy"
+msgstr ""
+
+#: .\app\main\models.py:219 .\app\main\modelsGame.py:158
+msgid "Historical"
+msgstr ""
+
+#: .\app\main\models.py:220 .\app\main\modelsGame.py:159
+msgid "Horror"
+msgstr ""
+
+#: .\app\main\models.py:221 .\app\main\modelsGame.py:160
+msgid "Romance"
+msgstr ""
+
+#: .\app\main\models.py:222 .\app\main\modelsGame.py:161
+msgid "Sci-fi"
+msgstr ""
+
+#: .\app\main\models.py:223 .\app\main\modelsGame.py:162
+msgid "Thriller"
+msgstr ""
+
+#: .\app\main\models.py:226 .\app\main\modelsGame.py:164
+msgid "Genre"
+msgstr ""
+
+#: .\app\main\models.py:236 .\app\main\modelsGame.py:52
+msgid "Rated"
+msgstr ""
+
+#: .\app\main\models.py:238 .\app\main\modelsGame.py:168
+msgid "Background"
+msgstr ""
+
+#: .\app\main\models.py:239 .\app\main\models.py:439
+#: .\app\main\modelsGame.py:92
+msgid "Description"
+msgstr ""
+
+#: .\app\main\models.py:240
+msgid "Premise"
+msgstr ""
+
+#: .\app\main\models.py:241
+msgid "Plot"
+msgstr ""
+
+#: .\app\main\models.py:242
+msgid "Country"
+msgstr ""
+
+#: .\app\main\models.py:243 .\app\main\modelsGame.py:44
+msgid "Year"
+msgstr ""
+
+#: .\app\main\models.py:244 .\app\main\models.py:441
+#: .\app\main\modelsGame.py:94
+msgid "Runtime"
+msgstr ""
+
+#: .\app\main\models.py:245
+msgid "Release date"
+msgstr ""
+
+#: .\app\main\models.py:246
+msgid "Season"
+msgstr ""
+
+#: .\app\main\models.py:247
+msgid "Episodes"
+msgstr ""
+
+#: .\app\main\models.py:248
+msgid "First episode date"
+msgstr ""
+
+#: .\app\main\models.py:249
+msgid "Final episode date"
+msgstr ""
+
+#: .\app\main\models.py:256
+msgid "Status"
+msgstr ""
+
+#: .\app\main\models.py:257 .\app\main\templates\main\movie_detail.html:928
+msgid "Director"
+msgstr ""
+
+#: .\app\main\models.py:258
+msgid "Writer"
+msgstr ""
+
+#: .\app\main\models.py:259
+msgid "Creator/Showrunner"
+msgstr ""
+
+#: .\app\main\models.py:260
+msgid "Official Site URL"
+msgstr ""
+
+#: .\app\main\models.py:261
+msgid "Twitter URL"
+msgstr ""
+
+#: .\app\main\models.py:262
+msgid "Facebook URL"
+msgstr ""
+
+#: .\app\main\models.py:263
+msgid "Wiki URL"
+msgstr ""
+
+#: .\app\main\models.py:264
+msgid "IMBb ID"
+msgstr ""
+
+#: .\app\main\models.py:266 .\app\main\models.py:332
+msgid "Created"
+msgstr ""
+
+#: .\app\main\models.py:267 .\app\main\models.py:333
+msgid "Modified"
+msgstr ""
+
+#: .\app\main\models.py:268 .\app\main\models.py:447
+#: .\app\main\modelsGame.py:23 .\app\main\modelsGame.py:60
+#: .\app\main\modelsGame.py:105 .\app\main\modelsGame.py:169
+msgid "Published"
+msgstr ""
+
+#: .\app\main\models.py:317
+msgid "Vote"
+msgstr ""
+
+#: .\app\main\models.py:320 .\app\main\models.py:361 .\app\main\models.py:391
+msgid "Date"
+msgstr ""
+
+#: .\app\main\models.py:329 .\app\main\models.py:355
+msgid "Rating"
+msgstr ""
+
+#: .\app\main\models.py:354
+msgid "Text"
+msgstr ""
+
+#: .\app\main\models.py:356
+msgid "Is Adaptation Good"
+msgstr ""
+
+#: .\app\main\models.py:357 .\app\main\models.py:387
+msgid "Vote Up"
+msgstr ""
+
+#: .\app\main\models.py:358 .\app\main\models.py:388
+msgid "Vote Down"
+msgstr ""
+
+#: .\app\main\models.py:362 .\app\main\models.py:392 .\app\main\models.py:446
+#: .\app\main\modelsGame.py:59 .\app\main\modelsGame.py:104
+msgid "Renewal date"
+msgstr ""
+
+#: .\app\main\models.py:385
+msgid "Wise"
+msgstr ""
+
+#: .\app\main\models.py:386
+msgid "Unwise"
+msgstr ""
+
+#: .\app\main\models.py:417
+msgid "IMDb "
+msgstr ""
+
+#: .\app\main\models.py:418
+msgid "Tomatometer"
+msgstr ""
+
+#: .\app\main\models.py:419
+msgid "Audience Score (RT)"
+msgstr ""
+
+#: .\app\main\models.py:420
+msgid "Kinopoisk"
+msgstr ""
+
+#: .\app\main\models.py:421
+msgid "Metascore"
+msgstr ""
+
+#: .\app\main\models.py:422
+msgid "User Score (MC)"
+msgstr ""
+
+#: .\app\main\models.py:423 .\app\main\models.py:450
+#: .\app\main\modelsGame.py:117
+msgid "Source"
+msgstr ""
+
+#: .\app\main\models.py:424
+msgid "Reviews/Votes"
+msgstr ""
+
+#: .\app\main\models.py:425
+msgid "Score/Rating"
+msgstr ""
+
+#: .\app\main\models.py:434
+msgid "Trailer"
+msgstr ""
+
+#: .\app\main\models.py:435
+msgid "Teaser"
+msgstr ""
+
+#: .\app\main\models.py:436
+msgid "Clip"
+msgstr ""
+
+#: .\app\main\models.py:437
+msgid "Interview"
+msgstr ""
+
+#: .\app\main\models.py:442 .\app\main\modelsGame.py:95
+msgid "Like"
+msgstr ""
+
+#: .\app\main\models.py:443 .\app\main\modelsGame.py:96
+msgid "Dislike"
+msgstr ""
+
+#: .\app\main\models.py:444 .\app\main\modelsGame.py:97
+msgid "View"
+msgstr ""
+
+#: .\app\main\models.py:445 .\app\main\modelsGame.py:58
+#: .\app\main\modelsGame.py:103
+msgid "Publication date"
+msgstr ""
+
+#: .\app\main\models.py:449 .\app\main\modelsGame.py:116
+msgid "Youtube"
+msgstr ""
+
+#: .\app\main\models.py:451 .\app\main\modelsGame.py:118
+msgid "Video Url Source"
+msgstr ""
+
+#: .\app\main\models.py:452 .\app\main\modelsGame.py:119
+msgid "Video Id Source"
+msgstr ""
+
+#: .\app\main\models.py:454 .\app\main\modelsGame.py:121
+#: .\app\main\modelsGame.py:126 .\config\settings.py:151
+msgid "English"
+msgstr ""
+
+#: .\app\main\models.py:455 .\app\main\modelsGame.py:122
+#: .\app\main\modelsGame.py:127 .\config\settings.py:152
+msgid "Russian"
+msgstr ""
+
+#: .\app\main\models.py:456 .\app\main\modelsGame.py:128
+msgid "Language"
+msgstr ""
+
+#: .\app\main\modelsGame.py:21 .\app\main\modelsGame.py:165
+msgid "URL Wiki"
+msgstr ""
+
+#: .\app\main\modelsGame.py:41
+msgid "Developer"
+msgstr ""
+
+#: .\app\main\modelsGame.py:42
+msgid "Publisher"
+msgstr ""
+
+#: .\app\main\modelsGame.py:43
+msgid "World Released"
+msgstr ""
+
+#: .\app\main\modelsGame.py:54
+msgid "GameMovie"
+msgstr ""
+
+#: .\app\main\modelsGame.py:89
+msgid "Cutscenes"
+msgstr ""
+
+#: .\app\main\modelsGame.py:90
+msgid "Gameplay"
+msgstr ""
+
+#: .\app\main\modelsGame.py:93
+msgid "Game"
+msgstr ""
+
+#: .\app\main\modelsGame.py:101
+msgid "Original Author Source @"
+msgstr ""
+
+#: .\app\main\modelsGame.py:123
+msgid "Subtitle"
+msgstr ""
+
+#: .\app\main\modelsGame.py:129
+msgid "Video"
+msgstr ""
+
+#: .\app\main\modelsGame.py:166
+msgid "ID IMDB"
+msgstr ""
+
+#: .\app\main\modelsGame.py:187
+msgid "Similar"
+msgstr ""
+
+#: .\app\main\modelsGame.py:188
+msgid "UnSimilar"
+msgstr ""
+
+#: .\app\main\templates\inc\_dialog_form_review_edit.html:13
+#: .\app\main\templates\inc\_dialog_form_review_edit.html:14
+msgid "Is recommend?"
+msgstr ""
+
+#: .\app\main\templates\inc\_dialog_form_review_edit.html:19
+#: .\app\main\templates\inc\_dialog_form_review_edit.html:20
+msgid "Is active?"
+msgstr ""
+
+#: .\app\main\templates\main\franchise_detail.html:170
+msgid "inspirer"
+msgstr ""
+
+#: .\app\main\templates\main\franchise_detail.html:221
+msgid "similar"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:128
+msgid "alt title"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:182
+msgid "season"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:188
+msgid "episodes"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:893
+msgid "Based on the Video Game"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1139
+msgid "summery"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1140
+msgid "review"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1153
+msgid "synopsis"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1243
+msgid "cast"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1274
+#: .\app\main\templates\main\movie_detail.html:1318
+msgid "character"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1284
+#: .\app\main\templates\main\movie_detail.html:1332
+msgid "actor"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1351
+msgid "crew"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1373
+msgid "director"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1386
+msgid "writer"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1399
+msgid "creator"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1411
+msgid "licensor"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1423
+msgid "production"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1436
+msgid "distributor"
+msgstr ""
+
+#: .\app\main\templates\main\movie_detail.html:1449
+msgid "movie"
+msgstr ""
+
+#: .\app\main\views.py:429
+msgid "Нет доступа, для получения доступа авторизуйтесь"
+msgstr ""
+
+#: .\res\templates\inc\_movies_panel.html:70
+#: .\res\templates\inc\_movies_panel.html:77
+msgid "order"
+msgstr ""
+
+#: .\res\templates\inc\_movies_panel.html:78
+msgid "alpha"
+msgstr ""
+
+#: .\res\templates\inc\_movies_panel.html:79
+msgid "released"
+msgstr ""
+
+#: .\res\templates\profile\password_reset_email.html:3
+msgid "Greetings"
+msgstr ""
+
+#: .\res\templates\profile\password_reset_email.html:5
+#, python-format
+msgid ""
+"\n"
+"You are receiving this email because you (or someone pretending to be you)\n"
+"requested that your password be reset on the %(domain)s site. If you do not\n"
+"wish to reset your password, please ignore this message.\n"
+msgstr ""
+
+#: .\res\templates\profile\password_reset_email.html:11
+msgid ""
+"\n"
+"To reset your password, please click the following link, or copy and paste "
+"it\n"
+"into your web browser:\n"
+msgstr ""
+
+#: .\res\templates\profile\password_reset_email.html:20
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: .\res\templates\profile\password_reset_email.html:23
+msgid "Best regards"
+msgstr ""
+
+#: .\res\templates\profile\password_reset_email.html:24
+msgid "Management"
+msgstr ""

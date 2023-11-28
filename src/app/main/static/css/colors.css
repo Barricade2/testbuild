@@ -1,0 +1,243 @@
+/*Color Variables*/
+:root {
+    --primary-color: #eff2f5; /*#eff2f5*/
+    --primary-variant-color: #e4e8ec; /*#e4e8ec*/
+    --secondary-color: #fff; /*#FFF*/
+    --secondary-variant-color: #e4e8ec; /*#e4e8ec*/
+    --font-color: #666666; /*#666666;*/
+    --bg-color: #e4e8ec;
+    --surface-color: #fff; /*#FFFFFF*/
+    --surface-title-color: #e9e9e9; /*#FFFFFF*/
+    --icon-color: #666666; /*#666666;*/
+    --icon-color-secondary: #b4b4b4;
+    --accent-color: #0081C2; /*#0081C2*/
+    --url-accent-color: #145cae; /*#145cae*/
+    --ipt-accent-color:#ffbc00; /*#ffbc00*/
+    --ipt-accent-bg: #ffbc00;
+    --ipt-accent-line:#fff;
+    --surface-accent-color: #31d7a9;
+    --area-font-color: #3d444a; /*#3d444a;*/
+    --area-font-color2: #6c757d;
+    --border-color: #d2d2d2;
+    --border-color2: #e3e3e3b0;
+    /*--color-shadow*/
+    /*--color-gray-500*/
+    --button-border-color: #DDDDDD;
+    --transparent-color: transparent;
+    --primary-tr-color: #eff2f536;
+
+
+    --font-color4:#9299b5;
+    --title-color:#000000;
+    --text-color:#000000;
+    --heading-color: #292922;
+
+    --cycle-color1: #e5ece4;
+    --cycle-color2: #ede9e9;
+    --cycle-color3: #e4e5ec;
+    --cycle-color4: #e9e4ec;
+
+    --cycle-color_tr1: #e5ece436;
+    --cycle-color_tr2: #ede9e936;
+    --cycle-color_tr3: #e4e5ec36;
+    --cycle-color_tr4: #e9e4ec36;
+
+    --img-opacity: unset;
+    --item-tooltip-opacity: 0.8;
+    /*
+    //main background color
+    --primary-color
+    //primary such as footer,header color
+    --primary-var-color
+    //secondary such as button, detail
+    --secondary-color
+    //secondary used to distinguish two elements
+    --secondary-var-color
+    //background color appears behind scrollable content
+    --bg-color
+    //желтый цвет для фокуса или активных
+    --accent-color:
+    //surfaces of components, such as sheets and menus
+    --surface-color
+    --icon-color
+    --font-color
+
+    --onprimary-color - цвет для текста(font-color) и значков (icon-color)
+    --onsurface-color - цвет для текста и значков отображ
+    --text-primary-color(onprimary-color or font-color)
+    --navigation-bar-color(primary-var-color):
+    */
+
+  --md-outlined-button-outline-color:  rgba(98,105,118,.16);
+  --md-sys-color-outline:  rgba(98,105,118,.16);
+  --md-outlined-button-label-text-color: #145cae;
+  --md-outlined-button-hover-color:rgba(98,105,118,.16);
+  --md-outlined-button-hover-label-text-color:#666666;
+  --md-outlined-button-hover-state-layer-color:rgba(98,105,118,.16);
+  --md-outlined-button-focus-outline-color:  rgba(98,105,118,.16);
+  --md-outlined-button-focus-label-text-color:#666666;
+  --md-outlined-button-pressed-label-text-color:#666666;
+  --md-outlined-button-pressed-color:rgba(98,105,118,.16);
+  --md-outlined-button-focus-state-layer-color: rgba(98,105,118,.16);
+  --md-outlined-button-hover-outline-color:rgba(98,105,118,.16);
+  --md-outlined-button-pressed-state-layer-color:#666666; /*при нажатом состоянии*/
+  --md-outlined-button-container-shape: 9px;
+
+
+  --md-outlined-icon-button-container-size: 34px;
+  --md-outlined-icon-button-container-shape: 17%;
+  --md-outlined-icon-button-icon-size: 24px;
+  --md-outlined-icon-button-unselected-outline-width: 1px;
+  --md-sys-color-outline: rgba(98,105,118,.16);
+
+  --md-outlined-button-with-icon-focus-icon-color: #666666;
+  --md-outlined-button-with-icon-pressed-icon-color: #666666;
+  --md-outlined-button-with-icon-hover-icon-color: #666666;
+  --md-outlined-button-with-icon-icon-color: #145cae;
+  --md-outlined-button-with-icon-icon-size: 24px;
+}
+
+[data-theme="dark"] {
+    --primary-color: #212529;
+    --primary-variant-color: #212529;
+    --secondary-color: #2b2e31;
+    --secondary-variant-color: #536390;
+    --font-color: #989b9d; /*#e1e1ff #d6d7dd*/
+    --bg-color: rgb(0 0 0 / 20%); /*#161625*/
+    --surface-color: #2b2e31;
+    --surface-title-color: #454849; /*#FFFFFF*/
+    --icon-color: #4e4e4e;
+    --icon-color-secondary: #9f9d9d;
+    --accent-color: #fff;
+    --url-accent-color: #48aaff; /*#1569B2 #145cae*/
+    --ipt-accent-color: #d6d7dd; /*#ffbc00 #454849*/
+    --ipt-accent-bg: #454849;
+    --ipt-accent-line:#454849;
+    --surface-accent-color: var(--ipt-accent-bg);
+    --area-font-color: #d6d7dd; /*#3d444a;*/
+    --area-font-color2: #9299b5; /*#6c757d*/
+    --border-color: transparent;
+    --border-color2: #e3e3e30d;
+    --title-color: #d6d7dd;
+    --text-color:#989b9d ; /*#def1fd*/
+    --heading-color: #818cab;
+    --button-border-color: #4e4e4e;
+    --primary-tr-color: #21252936;
+
+    --cycle-color1: #2b2e31;
+    --cycle-color2: #2b2e31;
+    --cycle-color3: #2b2e31;
+    --cycle-color4: #2b2e31;
+
+    --img-opacity: 0.8;
+    --item-tooltip-opacity: unset;
+}
+
+/*auto detect system dark preference, prefersSystemDarkScheme*/
+@media (prefers-color-scheme: dark) {
+    :root {
+      --primary-color: #212529;
+      --primary-variant-color: #212529;
+      --secondary-color: #2b2e31;
+      --secondary-variant-color: #536390;
+      --font-color: #989b9d; /*#e1e1ff*/
+      --bg-color: rgb(0 0 0 / 20%);
+      --surface-color: #2b2e31;
+      --surface-title-color: #454849; /*#FFFFFF*/
+      --icon-color: #4e4e4e;
+      --icon-color-secondary: #9f9d9d;
+      --accent-color: #fff;
+      --url-accent-color: #48aaff; /*#1569B2 #145cae*/
+      --ipt-accent-color: #d6d7dd; /*#ffbc00 #454849*/
+      --ipt-accent-bg: #454849;
+      --ipt-accent-line:#454849;
+      --surface-accent-color: var(--ipt-accent-bg);
+      --area-font-color: #d6d7dd; /*#3d444a;*/
+      --area-font-color2: #9299b5; /*#6c757d*/
+      --border-color: transparent;
+      --border-color2: #e3e3e30d;
+      --title-color: #d6d7dd;
+      --text-color:#989b9d ; /*#def1fd*/
+      --heading-color: #818cab;
+      --button-border-color: #4e4e4e;
+      --primary-tr-color: #21252936;
+
+      --cycle-color1: #2b2e31;
+      --cycle-color2: #2b2e31;
+      --cycle-color3: #2b2e31;
+      --cycle-color4: #2b2e31;
+
+      --img-opacity: 0.8;
+      --item-tooltip-opacity: unset;
+  }
+
+  [data-theme="light"] {
+    --primary-color: #eff2f5; /*#eff2f5*/
+    --primary-variant-color: #e4e8ec; /*#e4e8ec*/
+    --secondary-color: #fff; /*#FFF*/
+    --secondary-variant-color: #e4e8ec; /*#e4e8ec*/
+    --font-color: #666666; /*#666666;*/
+    --bg-color: #e4e8ec;
+    --surface-color: #fff; /*#FFFFFF*/
+    --surface-title-color: #e9e9e9; /*#FFFFFF*/
+    --icon-color: #666666; /*#666666;*/
+    --icon-color-secondary: #b4b4b4;
+    --accent-color: #0081C2; /*#0081C2*/
+    --url-accent-color: #145cae; /*#145cae*/
+    --ipt-accent-color:#ffbc00; /*#ffbc00*/
+    --ipt-accent-bg: #ffbc00;
+    --surface-accent-color: #31d7a9;
+    --ipt-accent-line:#fff;
+    --area-font-color: #3d444a; /*#3d444a;*/
+    --area-font-color2: #6c757d;
+    --border-color: #d2d2d2;
+    --border-color2: #e3e3e3b0;
+    /*--color-shadow*/
+    /*--color-gray-500*/
+    --button-border-color: #DDDDDD;
+    --transparent-color: transparent;
+    --primary-tr-color: #eff2f536;
+
+
+    --font-color4:#9299b5;
+    --title-color:#000000;
+    --text-color:#000000;
+    --heading-color: #292922;
+
+    --cycle-color1: #e5ece4;
+    --cycle-color2: #ede9e9;
+    --cycle-color3: #e4e5ec;
+    --cycle-color4: #e9e4ec;
+
+    --cycle-color_tr1: #e5ece436;
+    --cycle-color_tr2: #ede9e936;
+    --cycle-color_tr3: #e4e5ec36;
+    --cycle-color_tr4: #e9e4ec36;
+
+    --img-opacity: unset;
+    --item-tooltip-opacity: 0.8;
+    /*
+    //main background color
+    --primary-color
+    //primary such as footer,header color
+    --primary-var-color
+    //secondary such as button, detail
+    --secondary-color
+    //secondary used to distinguish two elements
+    --secondary-var-color
+    //background color appears behind scrollable content
+    --bg-color
+    //желтый цвет для фокуса или активных
+    --accent-color:
+    //surfaces of components, such as sheets and menus
+    --surface-color
+    --icon-color
+    --font-color
+
+    --onprimary-color - цвет для текста(font-color) и значков (icon-color)
+    --onsurface-color - цвет для текста и значков отображ
+    --text-primary-color(onprimary-color or font-color)
+    --navigation-bar-color(primary-var-color):
+    */
+}
+}

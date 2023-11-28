@@ -1,0 +1,68 @@
+.ui-widget-content a{
+        color: #145cae;
+    }
+.ui-dialog .ui-dialog-content{
+    padding: 0.1em 0.4em;
+}
+.ui-dialog .ui-dialog-titlebar {
+    padding: 0.1em 0.2em;
+    font-size: 0.8em;
+    padding: 0.3rem 0.4rem;
+}
+.ui-dialog{
+    padding: 0;
+}
+
+#dialog-inspirer p {
+    /*display: contents;*/
+    width: -webkit-fill-available;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+}
+
+#dialog-inspirer a {
+    /*display: contents;*/
+    display: block;
+    width: -webkit-fill-available;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+}
+
+#dialog-inspirer span {
+    font-weight: bold;
+}
+
+#dialog-inspirer .li-dialog {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#dialog-similar p {
+    /*display: contents;*/
+        width: -webkit-fill-available;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-transform: uppercase;
+    }
+
+#dialog-similar a {
+/*display: contents;*/
+    display: block;
+    width: -webkit-fill-available;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+}
+
+#dialog-similar span {
+    font-weight: bold;
+}
+
+#dialog-similar .li-dialog {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

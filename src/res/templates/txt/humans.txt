@@ -1,0 +1,11 @@
+# The humans responsible & technology colophon
+# http://humanstxt.org/
+
+/* TEAM */
+
+
+/* SITE */
+Language: English / Russian
+Doctype: HTML5
+Technologies: Python, Django
+IDE: PyCharm

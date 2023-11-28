@@ -1,0 +1,444 @@
+{% load static %}
+{% load i18n %}
+
+<header class="header-section">
+    <div class="container">
+        <div class="header-wrapper">
+            <!-- three stripes btn -->
+            <div class="header-bar d-lg-none">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <!-- three stripes btn - ! -->
+
+            <!--  logo -->
+            <div class="logo">
+                <a href="{% url 'movie:home' %}"  style="padding-top: 4px;padding-bottom: 4px;">
+                    {% comment %}<img src="{%static "img/logo.png" %}" alt="logo"> <!-- logo.svg -->{% endcomment %}
+                    {% comment %}<span>I</span>
+                    <span>I</span>
+                    <span>I</span>{% endcomment %}
+                    GAMOVIBASED
+                </a>
+            </div>
+            <!--  logo - ! -->
+
+            <!--  nav -->
+            <nav>
+                <ul class="menu" style="height: 100%;">
+                    <li style="display: none;">
+                        <a href="{% url 'movie:home' %}">Home</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="index.html">Home One</a>
+                            </li>
+                            <li>
+                                <a href="index-2.html">Home Two</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- header auth -->
+
+                    {% if not user.is_authenticated %}
+                        <li class="header-button pr-0 pl-0">
+                            <!--<a data-fancybox data-src="#modal" href="javascript:;" class="btn btn-primary">Open demo</a>
+                            <div style="display: none;" id="modal">
+                              <h2>Войти</h2>
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form.as_p }}
+                                    <button type="submit" class="btn btn-primary btn-block">Войти</button>
+                                </form>
+                            </div>-->
+                            <a href="javascript:showLogin();" rel="nofollow">
+                                <i class="fa fa-sign-in-alt"></i>
+                                Login
+                            </a>
+                        </li>
+                    {% endif %}
+                    <!--<li class="header-button pr-0">
+                        <a href="javascript:showFormReg();" rel="nofollow" style="box-shadow: 0 0 4px 0 #333333;">Registration</a>
+                    </li>-->
+                    <li class="header-button pr-0 pl-0 language-switch">
+                        {% get_current_language as LANGUAGE_CODE %}
+                        {% get_available_languages as LANGUAGES %}
+                        <a href="#0">
+                            {% if LANGUAGE_CODE == "en"  %} <img src="{% static "img/icons/en.gif" %}" title="LANGUAGES"> {% elif LANGUAGE_CODE == "ru" %} <img src="{% static "img/icons/ru.gif" %}" title="LANGUAGES">  {% endif %}
+                            </a>
+                        <ul class="submenu">
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                            <form name="lang{{ language.code }}" action="{% url 'set_language' %}" method="post">{% csrf_token %}
+                                <input name="next" type="hidden" value="{{ redirect_to }}">
+                                <input type="hidden" name="language" value="{{ language.code }}" />
+                                <li>
+                                <a href="javascript:this.lang{{ language.code }}.submit()">
+                                    {% if language.code == "en" %} <img src="{% static "img/icons/en.gif" %}"> {% elif language.code == "ru" %} <img src="{% static "img/icons/ru.gif" %}">  {% endif %}
+                                    {{ language.name_local }} ({{ language.code|upper }})
+                                </a>
+                             </li>
+                            </form>
+                        {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="header-button pr-0 pl-0 theme-switch">
+                        <a href="#0">
+                            <i class="{% if request.COOKIES.theme == 'dark' %}far fa-moon{% else %}fa fa-sun{% endif %}" title="THEME" style="vertical-align: middle;font-size: 15px;"></i>
+                        </a>
+                    {% comment %}<ul class="submenu">
+                            <li>
+                                <a href="#">
+                                     <i class="fa fa-adjust " style="font-size: 14px;"></i>
+                                    System
+                                </a>
+                            </li>
+                        </ul>{% endcomment %}
+                    </li>
+                    <li class="header-button pr-0 pl-0">
+                        <a href="#0" class="navbar-search" style="display: none;">
+                            <i class="fas fa-search" style="vertical-align: middle;font-size: 15px;"></i>
+                        </a>
+    top: 0;
+    right: 96%;
+    z-index: 100;
+    width: 475px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+
+">
+                              <input name="s" type="text" id="id_search" placeholder="Search..."  style=" width: 100%!important; background: var(--secondary-color); border: none;" />
+                              {% comment %}<div class="search-suggestion movies-listing" style="width: 100%; position: absolute; z-index: 9999; height: 100%;">
+                            <div class="search-suggestion-result popup-result-search" style="background-color: var(--surface-color); padding: 8px 5px 8px 5px; overflow-y: auto; max-height: 100vh;">
+                                <div class="search-suggestion-header">
+                                    <h6 style="border-bottom: 1px dashed #67696d; padding-bottom: 3px;">
+                                        Movies
+                                        <span style="border: 1px solid #666; background-color: #666; color: #fff; display: inline-block; padding: 0px 6px; margin: 0 1px; font-size: 0.9rem;  vertical-align: middle; border-radius: 5px;">
+                                            5
+                                        </span>
+                                    </h6>
+                                </div>
+                                <div class="search-suggestion-body" style="padding-bottom: 5px;">
+                                    <a class="math" style="display: flex;">
+                                        <div class="match-img mr-2">
+                                            <img src="/media/images/character/2022/03/15/b40_Rd0CTFz.png" style="width: 60px;">
+                                        </div>
+                                        <div class="match-content">
+                                            <div class="match-title">
+                                                Sonic
+                                            </div>
+                                            <div class="match-title-alt small">
+                                                Соник
+                                            </div>
+                                            <span class="match-year" style="    font-size: small;">
+                                                2019
+                                            </span>
+                                            <span class="small">
+                                                /
+                                            </span>
+                                            <span class="match-type" style="    font-size: small;">
+                                                Film
+                                            </span>
+                                        </div>
+                                    </a>
+                                                                        <a class="math" style="display: flex;">
+                                        <div class="match-img mr-2">
+                                            <img src="/media/images/character/2022/03/15/b40_Rd0CTFz.png" style="width: 60px;">
+                                        </div>
+                                        <div class="match-content">
+                                            <div class="match-title">
+                                                Sonic
+                                            </div>
+                                            <div class="match-title-alt small">
+                                                Соник
+                                            </div>
+                                            <span class="match-year" style="    font-size: small;">
+                                                2019
+                                            </span>
+                                            <span class="small">
+                                                /
+                                            </span>
+                                            <span class="match-type" style="    font-size: small;">
+                                                Film
+                                            </span>
+                                        </div>
+                                    </a>
+
+                                </div>
+
+                                <div class="search-suggestion-header">
+                                    <h6 style="border-bottom: 1px dashed #67696d; padding-bottom: 3px;">
+                                        Movies
+                                        <span style="border: 1px solid #666; background-color: #666; color: #fff; display: inline-block; padding: 0px 6px; margin: 0 1px; font-size: 0.9rem;  vertical-align: middle; border-radius: 5px;">
+                                            5
+                                        </span>
+                                    </h6>
+                                </div>
+                                <div class="search-suggestion-body">
+                                    <a class="math" style="display: flex;">
+                                        <div class="match-img mr-2">
+                                            <img src="/media/images/character/2022/03/15/b40_Rd0CTFz.png" style="width: 60px;">
+                                        </div>
+                                        <div class="match-content">
+                                            <div class="match-title">
+                                                Sonic
+                                            </div>
+                                            <div class="match-title-alt small">
+                                                Соник
+                                            </div>
+                                            <span class="match-year" style="    font-size: small;">
+                                                2019
+                                            </span>
+                                            <span class="small">
+                                                /
+                                            </span>
+                                            <span class="match-type" style="    font-size: small;">
+                                                Film
+                                            </span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>{% endcomment %}
+                        </form>
+                         <script>
+            $(document).ready(function () {
+                document.querySelector(".navbar-search").addEventListener("click", function (t) {
+                    t.preventDefault();
+                    var s = this.parentNode;
+                    s.classList.contains("open") ? ({% comment %}s.classList.remove("search-open"), {% endcomment %}s.querySelector(".form-search").classList.add("fadeIn")) : ({% comment %}s.classList.add("search-open"), {% endcomment %}s.querySelector(".form-search").classList.remove("fadeIn"), document.querySelector("#id_search").trigger("focus"))
+                })
+            })
+        </script>
+                    </li>
+                    {% if user.is_authenticated %}
+                        {% include 'inc/_header-profile-dropdown.html' %}
+                    {% endif %}
+                    <!-- header auth end -->
+
+            <div class="socialCircle-container d-lg-none">
+              <div class="socialCircle-item" id="install"><i class="fa fa-shield-alt"></i></div>
+              <div class="socialCircle-item"><i class="fab fa-android"></i></div>
+              <div class="socialCircle-item"><i class="fab fa-apple"></i></div>
+              <div class="socialCircle-center closed"><i class="fa fa-external-link-square-alt"></i></div>
+            </div>
+
+            <div class="appCircle-container d-lg-none">
+              <div class="socialCircle-item"><a href="https://twitter.com/gamovibased"><i class="fab fa-twitter"></i></a></div>
+              <div class="socialCircle-item"><a href="https://vk.com/movies_games"><i class="fab fa-vk"></i></a></div>
+              <div class="socialCircle-item"><a href="https://discord.gg/ABqWsKNj"><i class="fab fa-discord"></i></a></div>
+              <div class="appCircle-center closed"><i class="fa fa-share-alt"></i></div> <!--fa fa-times-->
+            </div>
+                </ul>
+            </nav>
+            <!--  nav - ! -->
+
+            {% if user.is_authenticated %}
+                <!--  profile -->
+                {% include 'inc/_header-profile.html' %}
+                <!--  profile - ! -->
+            {% endif %}
+
+
+        </div>
+    </div>
+</header>
+<style type="text/css">
+body {
+	margin:0;
+	padding:0;
+}
+.socialCircle-item {
+    width: 32px;
+    height: 32px;
+	position:absolute;
+	background:#333;
+	margin:50%;
+	text-align:center;
+	color:#ffffff;
+	font-size:25px;
+	cursor:pointer;
+}
+.socialCircle-item a {
+    color:#ffffff;
+}
+.socialCircle-container {
+	position:relative;
+	/*width:100px;
+	height:100px;
+	margin:0 auto;*/
+    bottom: 10%;
+    right: 11%;
+    position: fixed;
+    position: absolute;
+    z-index: 1000;
+}
+.socialCircle-center {
+    width: 45px;
+    height: 45px;
+	/*background:#35DBCD;*/
+    background: var(--surface-accent-color);
+	margin:50%;
+	position:absolute;
+	text-align:center;
+	color:#ffffff;
+	/*font-size: 22px;*/
+	cursor:pointer;
+}
+
+
+.appCircle-container {
+	position:relative;
+	/*width:100px;
+	height:100px;
+	margin:0 auto;*/
+    bottom: 10%;
+    left: 11%;
+    position: fixed;
+    position: absolute;
+    z-index: 1000;
+}
+
+.appCircle-center {
+    width: 45px;
+    height: 45px;
+	/*background:#35DBCD;*/
+    background: var(--surface-accent-color);
+	margin:50%;
+	position:absolute;
+	text-align:center;
+	color:#ffffff;
+	/*font-size: 22px;*/
+	cursor:pointer;
+}
+
+</style>
+
+<script>
+    $(document).ready(function () {
+
+        //var hasFocus = $('#id_search').is(':focus');
+        let id_search = document.getElementById('id_search');
+        $(id_search)
+            .blur(function (e) {
+                if (!e.relatedTarget || !$(e.relatedTarget).is(".search-suggestion-result .search-suggestion-body a")) {
+                    let isItem = document.querySelector('.search-suggestion');
+                    if (isItem != null) {
+                        isItem.style.display = "none";
+                    }
+                }
+            })
+            .focus(function () {
+                let isItem = document.querySelector('.search-suggestion');
+                if (isItem != null) {
+                    isItem.style.display = "block";
+                }
+            });
+
+        id_search.addEventListener("input", function (e) {
+            $.ajax({
+                type: "GET",
+                url: "",
+                data: {
+                    query: $(this).val(),
+                },
+                success: function (data) {
+                    if (data.success === true) {
+                        let isItem = document.querySelector(".search-suggestion");
+                        if (isItem == null) {
+                            let $elem = `<div class="search-suggestion movies-listing" style="width: 100%; position: absolute; z-index: 9999; display: block;">`;
+                            document.querySelector('.form-search').insertAdjacentHTML('beforeend', $elem);
+                        }
+                        const item = document.querySelector(".search-suggestion");
+                        let $elem = $(`${data.results}`);
+                        item.replaceChildren($elem[0]);
+                    }
+                },
+                error: function (data) {
+                }
+            })
+
+        });
+    });
+
+    function showFormReg() {
+        $.fancybox.open({
+            src: "",
+            type: "ajax",
+            ajax: {
+                settings: {
+                    type: "GET",
+                    data: {
+                    },
+                    success:function(data){
+                        <!--$("#sign-up").html(data);-->
+                    },
+                    error:function(data){
+                        notifyPopup('Ошибка соединения. Попробуйте повторить попытку через некоторое время.', '', 'error');
+                    }
+                }
+            },
+            afterShow: function() {
+                $('#regForm input[name=name]').focus();
+            }
+        });
+    };
+
+    function showLogin() {
+        $.fancybox.open({
+            src: "",
+            type: "ajax",
+            ajax: {
+                settings: {
+                    type: "GET",
+                    data: {
+                    },
+                    success:function(data){
+                        console.log("ffsss");
+                        <!--$("#sign-in").html(data);-->
+                    },
+                    error:function(data){
+                        notifyPopup('Ошибка соединения. Попробуйте повторить попытку через некоторое время.', '', 'error');
+                    }
+                }
+            }
+        });
+    };
+
+    function showPassReset() {
+        $.fancybox.open({
+            src: "",
+            type: "ajax",
+            ajax: {
+                settings: {
+                    type: "GET",
+                    data: {
+                    },
+                    success:function(data){
+                        <!--$("#sign-in").html(data);-->
+                    },
+                    error:function(data){
+                        notifyPopup('Ошибка соединения. Попробуйте повторить попытку через некоторое время.', '', 'error');
+                    }
+                }
+            }
+        });
+    };
+</script>
+    <script src="{%static "lib/radial-menu/socialCircle.js" %}"></script>                   <!-- star rating plugin -->
+
+<script type="text/javascript">
+    $( ".socialCircle-center" ).socialCircle({
+        rotate: 160,
+        radius:70,
+        circleSize: 3,
+        speed:100
+    });
+    $( ".appCircle-center" ).socialCircle({
+        rotate: 250,
+        radius:70,
+        circleSize: 3,
+        speed:100
+    });
+</script>

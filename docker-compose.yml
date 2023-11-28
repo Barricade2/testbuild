@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+    db:
+        image: postgres:latest
+        container_name: "gamovibased-postgres-db_cont"
+#        environment:
+#            - POSTGRES_USER=${POSTGRES_USER}
+#            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+#            - POSTGRES_DB=${POSTGRES_DB}
+#        env_file: ${PATH_ENV}
+        env_file: "./src/config/.env"
+        volumes:
+            - ./deploy/.db/postgresql_data:/var/lib/postgresql/data
+        ports:
+            - "5432:5432"
+        restart: always
+    web:
+        container_name: "gamovibased-djnago-web_cont"
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                WORK_DIR: ${WORK_DIR}
+                NAME_APP: ${NAME_APP}
+                DJ_PROJ: ${DJ_PROJ}
+        #command: python manage.py runserver 0.0.0.0:8000
+        volumes:
+            - .:/gamovibased
+        ports:
+            - "8000:8000"
+        env_file: "./src/config/.env"
+        depends_on:
+            - db
+    nginx:
+        container_name: "gamovibased-nginx_cont"
+        build:
+            context: ./deploy/nginx
+            dockerfile: Dockerfile
+            args:
+                WORK_DIR: /${NAME_APP}/deploy/gunicorn
+        volumes:
+            #- .:/gamovibased
+            - "./deploy/gunicorn:/gamovibased/deploy/gunicorn"
+        ports:
+            - "80:80"
+        env_file: "./src/config/.env"
+        depends_on:
+            - web
+
+

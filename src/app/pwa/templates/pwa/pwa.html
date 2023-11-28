@@ -1,0 +1,200 @@
+{% load static %}
+<!-- Path to manifest.json -->
+<link rel="manifest" href="/manifest.json">
+
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="{{ PWA_APP_NAME }}">
+
+
+{% comment %} <!-- see dynamic-meta -->
+<!-- Chrome for Android theme color -->
+<meta name="theme-color" content="{{ PWA_APP_THEME_COLOR }}">
+{% endcomment %}
+
+<!-- Add to homescreen for Safari on iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="{{ PWA_APP_NAME }}">
+<meta name="apple-mobile-web-app-status-bar-style" content="{{ PWA_APP_STATUS_BAR_COLOR }}">
+
+{% if PWA_APP_ICONS_APPLE %}
+    {% for icon in PWA_APP_ICONS_APPLE %}
+        <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.size }}">
+    {% endfor %}
+{% else %}
+    {% for icon in PWA_APP_ICONS %}
+        <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.size }}">
+    {% endfor %}
+{% endif %}
+
+
+{% for splash in PWA_APP_SPLASH_SCREEN %}
+<link href="{{ splash.src }}" media="{{ splash.media }}" rel="apple-touch-startup-image"/>
+{% endfor %}
+
+
+<!-- Tile for Win8 -->
+<meta name="msapplication-TileColor" content="{{ PWA_APP_BACKGROUND_COLOR }}">
+{% with PWA_APP_ICONS|last as icon %}
+<meta name="msapplication-TileImage" content="{{ icon.src }}">
+
+
+<link rel="icon" sizes="{{ icon.size }}" href="{{ icon.src }}">
+{% endwith %}
+
+<script type="text/javascript">
+    // Initialize the service worker
+    let newWorker;
+
+    function showUpdateAppSnackBar() {
+        console.log('snackbar: ', 'show');
+        var message = SnackBar({
+            message: "A new version of this app is available.",
+            timeout: 30000,
+            actions: [
+                {
+                    text: "Click to update.",
+                    function: function () {
+                        console.log('reload: ', 'click');
+                        newWorker.postMessage({ action: 'skipWaiting' });
+                    }
+                }
+            ]
+        })
+      }
+
+    function showUpdatePageSnackBar() {
+        console.log('snackbar: ', 'show');
+        var message = SnackBar({
+            message: "The page is updated.",
+            timeout: 30000,
+            actions: [
+                {
+                    text: "Click to update.",
+                    function: function () {
+                        console.log('reload: ', 'click');
+                        window.location.reload();
+                    }
+                }
+            ]
+        })
+      }
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceworker.js', {
+            scope: '{{ PWA_APP_SCOPE }}'
+        }).then(function (registration) {
+            // Registration was successful
+
+            registration.addEventListener('updatefound', () => { //TODO refresh
+                // A wild service worker has appeared in registration.installing!
+                newWorker = registration.installing;
+
+                newWorker.addEventListener('statechange', () => {
+                  // Has network.state changed?
+                  switch (newWorker.state) {
+                    case 'installed': if (navigator.serviceWorker.controller) {
+                        showUpdateAppSnackBar();
+                      }
+                      break;
+                  }
+                });
+              });
+
+            {% if PWA_APP_DEBUG_MODE %}
+            console.log('django-pwa: ServiceWorker registration successful with scope: ', registration.scope);
+            {% endif %}
+        }, function (err) {
+            // registration failed :(
+            {% if PWA_APP_DEBUG_MODE %}
+            console.log('django-pwa: ServiceWorker registration failed: ', err);
+            {% endif %}
+        });
+
+        let refreshing;
+        navigator.serviceWorker.addEventListener('controllerchange', function () {
+          console.log('controllerchange: ', refreshing);
+          if (refreshing) return;
+          window.location.reload();
+          refreshing = true;
+        });
+
+        navigator.serviceWorker.onmessage = function (evt) {
+          var message = JSON.parse(evt.data);
+          console.log(message)
+
+          switch (message.type) {
+            case 'refresh': if (navigator.serviceWorker.controller) {
+                //var isAsset = message.url.includes('asset');
+                //var isStatic = message.url.includes('static');
+                // ETag header usually contains the hash of the resource so it is a very effective way of check for fresh content.
+                var lastETag = localStorage.currentETag;
+                var isNew =  lastETag !== message.eTag;
+                console.log("isNew: ", isNew, "lastETag: ", lastETag)
+                if (isNew) {
+                    // Escape the first time (when there is no ETag yet)
+                    if (lastETag && lastETag !== 'null') {
+                      console.log("lastETag", lastETag);
+                      showUpdatePageSnackBar();
+                    }
+                    //For teaching purposes, although this information is in the offline cache and it could be retrieved from the service worker, keeping track of the header in the localStorage keeps the implementation simple.
+                    localStorage.currentETag = message.eTag;
+                }
+              }
+              break;
+          }
+        };
+    }
+
+
+    // * BeforeInstallPromptEvent - install by button
+    let deferredPrompt;
+
+    window.addEventListener("DOMContentLoaded", async event => {
+      if ('BeforeInstallPromptEvent' in window) {
+        console.log("⏳ BeforeInstallPromptEvent supported but not fired yet");
+      } else {
+        console.log("❌ BeforeInstallPromptEvent NOT supported");
+      }
+      document.querySelector("#install").addEventListener("click", installApp);
+    });
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      console.log(`'beforeinstallprompt' event was fired.`);
+      document.querySelector("#install").style['pointer-events']="painted";
+    },(e) => {
+        console.log('error: ' + e);
+    });
+
+    window.addEventListener('appinstalled', (e) => {
+      deferredPrompt = null;
+      console.log('PWA was installed');
+    });
+
+    async function installApp() {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+
+        if (outcome === 'accepted') {
+            console.log('User accepted the install prompt.');
+        } else if (outcome === 'dismissed') {
+            console.log('User dismissed the install prompt');
+        }
+        console.log(`User response to the install prompt: ${outcome}`);
+
+        document.querySelector("#install").style['pointer-events']="none";
+      } else {
+         console.log('deferredPrompt null');
+      }
+
+    }
+
+    //document.querySelector("#install").addEventListener("click", installApp);
+    // * BeforeInstallPromptEvent - install by button
+</script>
+
+<script src="{% static  'lib/pwa/js/dj-pwa-support.js' %}"></script>

@@ -1,0 +1,33 @@
+.rate-it:not(:checked) > input {
+        position:absolute;
+        top:-9999px;
+    }
+.rate-it:not(:checked) > label {
+    float:right;
+    width:1.4em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:12px;
+    color: #223c6e;
+}
+.rate-it:not(:checked) > label:before {
+    content: "\f004";
+}
+.rate-it > input:checked ~ label {
+    color: #f1481f;
+}
+@media (hover: hover) {
+    .rate-it:not(:checked) > label:hover,
+    .rate-it:not(:checked) > label:hover ~ label {
+        color: #f1481f;
+    }
+
+    .rate-it > input:checked + label:hover,
+    .rate-it > input:checked + label:hover ~ label,
+    .rate-it > input:checked ~ label:hover,
+    .rate-it > input:checked ~ label:hover ~ label,
+    .rate-it > label:hover ~ input:checked ~ label {
+        color: #b03213;
+    }
+}

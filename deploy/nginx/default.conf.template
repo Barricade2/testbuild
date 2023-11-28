@@ -1,0 +1,55 @@
+# Redirect HTTP to HTTPS
+#server {
+        #listen 80;
+        #server_name .gamovibased.com;
+        #return 301 https://$host$request_uri;
+#}
+
+#server {
+    #listen 443 ssl;
+
+    #server_name .gamovibased.com;
+    #ssl_certificate /etc/ssl/gamovibased.crt;
+    #ssl_certificate_key /etc/ssl/gamovibased.key;
+
+    #ssl_session_cache shared:SSL:10m;
+    #ssl_session_timeout 10m;
+    #keepalive_timeout 70;
+    #ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    #ssl_prefer_server_ciphers on;
+    #ssl_stapling on;
+    #ssl_trusted_certificate /etc/ssl/ca.crt;
+    #resolver 8.8.8.8;
+#}
+
+server {
+    listen ${NGINX_PORT} default_server;
+    server_name .gamovibased.com;
+
+    # Задаёт максимально допустимый размер тела запроса клиента.
+    client_max_body_size 4G;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+
+    # Раздача статических файлов / Serve static files directly
+    location /static/ {
+            root /${NAME_APP}/${WORK_DIR}/res/;
+    }
+    # Раздача медиа файлов / Serve media files directly
+    location /media/ {
+            root /${NAME_APP}/${WORK_DIR}/res/;
+    }
+
+    # Перенаправление на наш `WSGI` сервер / Pass on requests to Gunicorn listening at http://localhost:8000
+    location / {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Host $http_host; # $host
+        proxy_redirect off;
+
+        # IPv4
+        proxy_pass http://localhost:${EXTERNAL_WEB_PORT}; #http://localhost:8000
+        # UDS
+        #proxy_pass http://unix:/${NAME_APP}/deploy/gunicorn/gunicorn.sock;
+    }
+}

@@ -1,0 +1,4 @@
+name: gamovibased
+
+packages:
+- path: src
