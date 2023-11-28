@@ -3,6 +3,7 @@ name          = "gamovibased"
 version       = "0.0.1"
 authors       = ["Barricade2 <barri3139@gmail.com>"]
 homepage      = "https://gamovibased.com/"
+description   = "gamovibased"
 repository    = "https://github.com/barricade2/gamovibased"
 license       = "Proprietary"
 readme        = "README.md"
