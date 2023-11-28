@@ -34,10 +34,10 @@ ls -al /gamovibased
 #. /gamovibased/.venv/bin/poetry shell
 . $(poetry env info --path)/bin/activate
 
-#python /${NAME_APP}/${WORK_DIR}/manage.py makemigrations --no-input
-#python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input
-#python /${NAME_APP}/${WORK_DIR}/manage.py collectstatic --noinput --clear
-#python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
+python /${NAME_APP}/${WORK_DIR}/manage.py makemigrations --no-input
+python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input
+python /${NAME_APP}/${WORK_DIR}/manage.py collectstatic --noinput --clear
+python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
 
 # Запустить gunicorn / Run gunicorn
 gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ --config python:deploy.gunicorn.gunicorn_config --timeout 120
