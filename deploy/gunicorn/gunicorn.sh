@@ -37,6 +37,7 @@ ls -al /gamovibased
 python /${NAME_APP}/${WORK_DIR}/manage.py makemigrations --no-input
 python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input
 python /${NAME_APP}/${WORK_DIR}/manage.py collectstatic --noinput --clear
+python /${NAME_APP}/${WORK_DIR}/manage.py makemessages -l ru
 python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
 
 # Запустить gunicorn / Run gunicorn
