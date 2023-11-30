@@ -5,6 +5,12 @@ DEBUG = False
 print("prod")
 ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(' ')
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
@@ -40,4 +46,4 @@ CSRF_COOKIE_SECURE = True
 #     "http://127.0.0.1:9000",
 # ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
