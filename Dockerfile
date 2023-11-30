@@ -30,6 +30,7 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
 #RUN apk add --no-cache gcc libffi-dev musl-dev postgresql-dev
 RUN apt-get update && \
     apt-get -y install libpq-dev gcc  &&  \
+    apt-get install gettext &&  \
     pip install --no-cache-dir --upgrade pip && \
     pip install "poetry==$POETRY_VERSION"
     #curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python --version $POETRY_VERSION
