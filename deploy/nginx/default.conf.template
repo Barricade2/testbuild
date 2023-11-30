@@ -49,12 +49,9 @@ server {
     location / {
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_set_header Host $http_host; # $host
+        proxy_set_header Host $host;
         proxy_redirect off;
 
-        # IPv4
-        proxy_pass http://localhost:8000/; #http://localhost:8000
-        # UDS
-        #proxy_pass http://unix:/${NAME_APP}/deploy/gunicorn/gunicorn.sock;
+        proxy_pass http://localhost:8000; #http://localhost:8000
     }
 }
