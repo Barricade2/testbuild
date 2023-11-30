@@ -22,8 +22,12 @@
     #resolver 8.8.8.8;
 #}
 
+upstream django_app {
+    server web:8000;
+}
+
 server {
-    listen 8000;
+    listen 80;
     server_name testbuild-jd7c.onrender.com;
     charset utf-8;
 

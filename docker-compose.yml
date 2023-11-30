@@ -46,5 +46,6 @@ services:
         env_file: "./src/config/.env"
         depends_on:
             - web
+        restart: "on-failure"
 
 
