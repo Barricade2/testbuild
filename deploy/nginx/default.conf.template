@@ -1,9 +1,4 @@
 # Redirect HTTP to HTTPS https://realpython.com/django-nginx-gunicorn/ https://www.geeksforgeeks.org/how-to-dockerize-django-application-for-production-deployement-with-gunicorn-and-nginx/ https://khashtamov.com/ru/how-to-deploy-django-app/
-upstream django_proj {
-    # Список бэкэнд серверов для проксирования
-    server web:8000;
-}
-
 server {
         listen 80;
         server_name .testbuild-jd7c.onrender.com;
@@ -17,7 +12,7 @@ server {
         proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header Host $host;
         proxy_redirect off;
-        proxy_pass http://django_proj;
+        proxy_pass http://localhost:8000;
     }
 
     location = /favicon.ico { access_log off; log_not_found off; }
@@ -44,33 +39,3 @@ server {
     #ssl_trusted_certificate /etc/ssl/ca.crt;
     #resolver 8.8.8.8;
 }
-
-#server {
-    #listen 80;
-    #server_name .testbuild-jd7c.onrender.com;
-    #charset utf-8;
-
-    # Задаёт максимально допустимый размер тела запроса клиента.
-    #client_max_body_size 75M;
-
-    #location = /favicon.ico { access_log off; log_not_found off; }
-
-    # Раздача статических файлов / Serve static files directly
-    #location /static/ {
-    #        root /gamovibased/src/res;
-    #}
-    # Раздача медиа файлов / Serve media files directly
-    # location /media/ {
-    #        root /gamovibased/src/res;
-    # }
-
-    # Перенаправление на наш `WSGI` сервер / Pass on requests to Gunicorn listening at http://localhost:8000
-    #location / {
-    #    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    #    proxy_set_header X-Forwarded-Proto $scheme;
-    #    proxy_set_header Host $host;
-    #    proxy_redirect off;
-
-    #    proxy_pass http://localhost:8000; #http://localhost:8000
-    #}
-#}
