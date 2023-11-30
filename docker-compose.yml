@@ -36,11 +36,6 @@ services:
         build:
             context: ./deploy/nginx
             dockerfile: Dockerfile
-            args:
-                WORK_DIR: /${NAME_APP}/deploy/gunicorn
-        volumes:
-            #- .:/gamovibased
-            - "./deploy/gunicorn:/gamovibased/deploy/gunicorn"
         ports:
             - "80:80"
         env_file: "./src/config/.env"
