@@ -39,3 +39,5 @@ CSRF_COOKIE_SECURE = True
 #     "http://localhost:8080",
 #     "http://127.0.0.1:9000",
 # ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
