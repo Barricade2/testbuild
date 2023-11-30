@@ -36,11 +36,15 @@ services:
         build:
             context: ./deploy/nginx
             dockerfile: Dockerfile
+        volumes:
+            - static_volume:/gamovibased/src/res/static
+            - media_volume:/gamovibased/src/res/media
         ports:
             - "80:80"
         env_file: "./src/config/.env"
         depends_on:
             - web
         restart: "on-failure"
-
-
+volumes:
+  static_volume:
+  media_volume:
