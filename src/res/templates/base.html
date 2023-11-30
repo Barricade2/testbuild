@@ -1,6 +1,4 @@
 {% load static %}
-{% load compress %}
-{% load pwa %}
 <!DOCTYPE html>
 <html lang="en" data-theme="{% if request.COOKIES.theme %}{{ request.COOKIES.theme }}{% else %}light{% endif %}">
 
@@ -19,40 +17,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{%static "img/favicons/favicon-32x32.png"%}">
     <link rel="mask-icon" href="{%static "img/favicons/favicon-safari.svg"%}" color="#000000">
     <!--  <link rel="shortcut icon" type="image/x-icon" href="{%static "img/favicons/favicon.ico"%}" /> -->
-    {% compress css %}
-        <link rel="stylesheet" href="{%static "lib/bootstrap/v5.2/bootstrap.min.css" %}">
-        <link rel="stylesheet" href="{%static "lib/bootstrap/bootstrap.min.css" %}">
-        <link rel="stylesheet" href="{%static "lib/fontawesome/css/all.min.css" %}">            <!--- icon plugin --->
-        <link rel="stylesheet" href="{%static "lib/animate/animate.css" %}">                <!--- animation trigger plugin --->
-        <link rel="stylesheet" href="{%static "lib/flaticon/flaticon.css" %}">              <!--- icon plugin --->
-        <link rel="stylesheet" href="{%static "lib/magnific-popup/magnific-popup.css" %}">  <!--- lightbox & dialog, modal popup plugin for displaying images plugin --->
-        <link rel="stylesheet" href="{%static "lib/odometer/odometer.css" %}">              <!-- animation smoothly numbers plugin -->
-        <link rel="stylesheet" href="{%static "lib/owl-carousel/owl.carousel.min.css" %}">  <!--- carousel plugin --->
-        <link rel="stylesheet" href="{%static "lib/owl-carousel/owl.theme.default.min.css" %}"> <!--- carousel plugin --->
-        <link rel="stylesheet" href="{%static "lib/nice-select/nice-select.css" %}">        <!--- header dropdowns plugin --->
-        <link rel="stylesheet" href="{%static "css/main.css" %}">
-        <link rel="stylesheet" href="{%static "css/item.staff.css" %}">
-        <link rel="stylesheet" href="{%static "lib/notification/notification.css" %}">      <!-- notification plugin -->
-        <link rel="stylesheet" href="{%static "lib/rateyo/jquery.rateyo.min.css" %}">       <!-- star rating plugin -->
-        <link rel="stylesheet" href="{%static "lib/snackbar/js-snackbar.css" %}">           <!-- snackbar plugin -->
-    {% endcompress %}
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0">
-
-    {% compress css %}
-        <link rel="stylesheet" href="{%static "css/jquery-ui-1.13.1.css" %}" type="text/css"/>
-        <link rel="stylesheet" href="{%static "css/isotope.css" %}" type="text/css"/>
-        <link rel="stylesheet" href="{%static "css/movies_panel.css" %}" type="text/css"/>
-        <link rel="stylesheet" href="{%static "lib/fancybox/jquery.fancybox.min.css" %}" type="text/css"/> <!-- modal popup plugin for displaying images, html content, multi-media -->
-    {% endcompress %}
-    {% compress js %}
-        <script src="{%static "js/jquery.min.js" %}" type="text/javascript"></script>
-        <script src="{%static "js/jquery.isotope.js" %}" type="text/javascript"></script>
-        <script src="{%static "js/jquery.bt.min.js" %}" type="text/javascript"></script>
-    {% endcompress %}
-    <script src="{%static "lib/snackbar/js-snackbar.js" %}"></script>                       <!-- snackbar plugin -->
-
-    {% include 'pwa/dynamic-meta.html' %}
-    {% progressive_web_app_meta %}
 <!--
     <link rel="stylesheet" href="{%static "lib/fancybox/jquery.fancybox.css" %}" type="text/css"/>
 -->
@@ -85,8 +49,6 @@
     <!-- ========== Footer ========== -->
     {% include 'inc/_footer.html' %}
     <!-- ========== Footer - ! ========== -->
-    {% if not request.COOKIES.cookies_policy %}
-    {% endif %}
 
 <!--<script>
 (function () {
@@ -97,31 +59,7 @@
 })();
 </script>-->
 <!-- JS -->
-{% compress js %}
-    <script src="{%static "js/jquery-3.3.1.min.js"%}"></script>
-    <script src="{%static "js/jquery-ui-1.13.1.min.js" %}"></script>
-    <script src="{%static "js/modernizr-3.6.0.min.js"%}"></script>                          <!-- tests CSS3 and HTML5 features are available -->
-    <script src="{%static "js/plugins.js"%}"></script>
-    <script src="{%static "lib/popper/popper.min.js"%}"></script> <!-- data-toggle="dropdown"--> <!--- popup anchored position floating elements --->
-    <script src="https://unpkg.com/@popperjs/core@2"></script>    <!-- data-bs-toggle="dropdown"-->
-    <script src="{%static "lib/bootstrap/v5.2/bootstrap.min.js"%}"></script>
-    <script src="{%static "lib/bootstrap/bootstrap.min.js"%}"></script>
-    <script src="{%static "js/isotope.pkgd.min.js"%}"></script>
-    <script src="{%static "lib/magnific-popup/magnific-popup.min.js"%}"></script>           <!--- lightbox & dialog, modal popup plugin for displaying images --->
-    <script src="{%static "lib/owl-carousel/owl.carousel.min.js"%}"></script>               <!--- carousel plugin --->
-    <script src="{%static "lib/animate/wow.min.js"%}"></script>                             <!--- animation page scroll plugin --->
-    <script src="{%static "lib/countdown/countdown.min.js"%}"></script>                     <!-- countdown date plugin -->
-    <script src="{%static "lib/odometer/odometer.min.js"%}"></script>                       <!-- animation smoothly numbers -->
-    <script src="{%static "js/viewport.jquery.js"%}"></script>
-    <script src="{%static "lib/nice-select/nice-select.js"%}"></script>                     <!--- header dropdowns plugin --->
-    <script src="{%static "js/main.js" %}"></script>
-    <script src="{%static "lib/long-press-event/long-press-event.min.js" %}"></script>      <!-- fun long-press plugin -->
-    <script src="{%static "lib/fancybox/jquery.fancybox.min.js" %}"></script>               <!-- lightbox & dialog, modal popup plugin for displaying images, html content, multi-media -->
-    <script src="{%static "lib/notification/Notification.js" %}"></script>                  <!-- notification plugin -->
-    <script src="{%static "js/dark.js" %}"></script>
-    <script src="{%static "lib/rateyo/jquery.rateyo.min.js" %}"></script>                   <!-- star rating plugin -->
-    <script src="{%static "lib/radial-menu/socialCircle.js" %}"></script>                   <!-- radial plugin -->
-{% endcompress %}
+
 <!--
 <script src="{%static "lib/fancybox/fancybox.umd.js" %}"></script>
 -->

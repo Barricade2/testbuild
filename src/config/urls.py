@@ -37,7 +37,6 @@ urlpatterns = [
         content_type='text/plain',
     )),
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicons/favicon.ico'))),
-    path('', include('app.pwa.urls')),
 ] + i18n_patterns(
     path('i18n/', include('django.conf.urls.i18n')),
     path('jsi18n/', JavaScriptCatalog.as_view(), name='javascript-catalog'),
