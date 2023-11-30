@@ -1,4 +1,4 @@
-# Redirect HTTP to HTTPS https://realpython.com/django-nginx-gunicorn/
+# Redirect HTTP to HTTPS https://realpython.com/django-nginx-gunicorn/ https://www.geeksforgeeks.org/how-to-dockerize-django-application-for-production-deployement-with-gunicorn-and-nginx/ https://khashtamov.com/ru/how-to-deploy-django-app/
 server {
         listen 80;
         server_name .testbuild-jd7c.onrender.com;
