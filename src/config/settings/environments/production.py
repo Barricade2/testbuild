@@ -40,4 +40,4 @@ CSRF_COOKIE_SECURE = True
 #     "http://127.0.0.1:9000",
 # ]
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
