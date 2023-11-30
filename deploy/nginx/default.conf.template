@@ -1,71 +1,32 @@
-# Redirect HTTP to HTTPS https://realpython.com/django-nginx-gunicorn/ https://www.geeksforgeeks.org/how-to-dockerize-django-application-for-production-deployement-with-gunicorn-and-nginx/ https://khashtamov.com/ru/how-to-deploy-django-app/
-server {
+user  nginx;
+worker_processes  auto;
+
+error_log  /var/log/nginx/error.log notice;
+pid        /var/run/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                      '$status $body_bytes_sent "$http_referer" '
+                      '"$http_user_agent" "$http_x_forwarded_for"';
+    access_log  /var/log/nginx/access.log  main;
+    sendfile        on;
+    keepalive_timeout  65;
+    gzip  on;
+
+    server {
         listen 80;
-        server_name .testbuild-jd7c.onrender.com;
-        return 301 https://$host$request_uri;
-}
-
-server {
-
-    location / {
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
         proxy_set_header Host $host;
-        proxy_redirect off;
-        proxy_pass http://localhost:8000;
+        proxy_set_header X-Forwarded-For $remote_addr;
+
+           location / {
+            proxy_pass http://testbuild-jd7c.render.com; # Local back end
+            proxy_redirect default;
+        }
     }
-
-    location = /favicon.ico { access_log off; log_not_found off; }
-
-    location /static/ {
-            root /gamovibased/src/res;
-    }
-    location /media/ {
-            root /gamovibased/src/res;
-    }
-
-    listen 443 ssl;
-
-    server_name .testbuild-jd7c.onrender.com;
-    #ssl_certificate /etc/ssl/gamovibased.crt;
-    #ssl_certificate_key /etc/ssl/gamovibased.key;
-
-    #ssl_session_cache shared:SSL:10m;
-    #ssl_session_timeout 10m;
-    #keepalive_timeout 70;
-    #ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-    #ssl_prefer_server_ciphers on;
-    #ssl_stapling on;
-    #ssl_trusted_certificate /etc/ssl/ca.crt;
-    #resolver 8.8.8.8;
 }
-
-#server {
-    #listen 80;
-    #server_name .testbuild-jd7c.onrender.com;
-    #charset utf-8;
-
-    # Задаёт максимально допустимый размер тела запроса клиента.
-    #client_max_body_size 75M;
-
-    #location = /favicon.ico { access_log off; log_not_found off; }
-
-    # Раздача статических файлов / Serve static files directly
-    #location /static/ {
-    #        root /gamovibased/src/res;
-    #}
-    # Раздача медиа файлов / Serve media files directly
-    # location /media/ {
-    #        root /gamovibased/src/res;
-    # }
-
-    # Перенаправление на наш `WSGI` сервер / Pass on requests to Gunicorn listening at http://localhost:8000
-    #location / {
-    #    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    #    proxy_set_header X-Forwarded-Proto $scheme;
-    #    proxy_set_header Host $host;
-    #    proxy_redirect off;
-
-    #    proxy_pass http://localhost:8000; #http://localhost:8000
-    #}
-#}
