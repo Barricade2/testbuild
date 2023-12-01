@@ -1,4 +1,7 @@
 {% extends "admin/mptt_change_list.html" %}
+{% load admin_urls %}
+{% load i18n %}
+
 {% block object-tools-items %}
     <li>
         <a href="{% url opts|admin_urlname:'history' original.pk|admin_urlquote %}" class="historylink">{% translate "History" %}</a>
