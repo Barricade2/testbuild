@@ -91,7 +91,7 @@ image_name = { var = "{NAME_APP}_img", recursive = true }
 web_container_name = { var = "{NAME_APP}_web_cont", recursive = true }
 db_container_name = { var = "{NAME_APP}_db_cont", recursive = true }
 nginx_container_name = { var = "{NAME_APP}_nginx_cont", recursive = true }
-env_path = { var = ".{WORK_DIR}/{DJ_PROJ}/.env", recursive = true }
+env_path = { var = ".{WORK_DIR}/{DJ_PROJ}/.env ./.env", recursive = true }
 my_path = { var = "{NAME_APP}", recursive = true }
 
 [tool.taskipy.tasks]
