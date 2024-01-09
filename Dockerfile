@@ -28,7 +28,9 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
     POETRY_VERSION=1.6.1 \
     NAME_APP="gamovibased" \
     WORK_DIR="/src" \
-    DJ_PROJ="config"
+    DJ_PROJ="config" \
+    EXTERNAL_WEB_PORT="80"\
+    INTERNAL_WEB_PORT="80"
 
 #RUN apk add --no-cache gcc libffi-dev musl-dev postgresql-dev
 RUN apt-get update && \
