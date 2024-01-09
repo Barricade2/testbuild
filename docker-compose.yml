@@ -31,6 +31,20 @@ services:
         env_file: "./src/config/.env"
         depends_on:
             - db
+    nginx:
+        container_name: "gamovibased-nginx_cont"
+        build:
+            context: ./deploy/nginx
+            dockerfile: Dockerfile
+        volumes:
+            - static_volume:/gamovibased/src/res/static
+            - media_volume:/gamovibased/src/res/media
+        ports:
+            - "80:80"
+        env_file: "./src/config/.env"
+        depends_on:
+            - web
+        restart: "on-failure"
 volumes:
   static_volume:
   media_volume:

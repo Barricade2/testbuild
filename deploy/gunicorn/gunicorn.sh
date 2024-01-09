@@ -30,7 +30,7 @@ export DJANGO_ENV
 # Running migrations in startup script might not be the best option, see:
 # docs/pages/template/production-checklist.rst
 # Получить данные из файла с переменными окружения
-export $(grep -v '^#' ${WORK_DIR}/${DJ_PROJ}/.env | xargs)
+export $(grep -v '^#' /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env | xargs)
 ls -al /gamovibased
 #. /gamovibased/.venv/bin/poetry shell
 . $(poetry env info --path)/bin/activate
