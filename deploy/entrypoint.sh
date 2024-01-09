@@ -4,10 +4,10 @@
 
 #cd /${NAME_APP}/${WORK_DIR}/
 
-export $(grep -v '^#' ${WORK_DIR}/${DJ_PROJ}/.env | xargs) # .env.prod for production
-export DJANGO_ENV=${DJANGO_ENV} # entrypoint.prod.sh for production
+export $(grep -v '^#' /src/config/.env | xargs) # .env.prod for production
+export DJANGO_ENV=production # entrypoint.prod.sh for production
 # Запустить скрипт для запуска сервера gunicorn / Run gunicorn script
-sh /${NAME_APP}/deploy/gunicorn/gunicorn.sh
+sh /gamovibased/deploy/gunicorn/gunicorn.sh
 
 
 

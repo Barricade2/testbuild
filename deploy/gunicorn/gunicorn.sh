@@ -16,14 +16,7 @@ set -o nounset
 # from os import environ
 # environ.setdefault("DJANGO_ENV", "production")
 # _ENV = environ["DJANGO_ENV"]
-echo "DJANGO_ENV is $DJANGO_ENV"
-if [ "$DJANGO_ENV" != 'production' ]; then
-  echo 'Error: DJANGO_ENV is not set to "production".'
-  echo 'Application will not start.'
-  exit 1
-fi
 
-export DJANGO_ENV
 
 # Run python specific scripts:
 # Running migrations in startup script might not be the best option, see:
