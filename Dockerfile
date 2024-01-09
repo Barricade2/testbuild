@@ -16,16 +16,19 @@ ENV PYTHONFAULTHANDLER=1 \
 
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:/root/.poetry/bin:/root/.local/bin/:$PATH"
 
-WORKDIR /$NAME_APP
+WORKDIR /gamovibased
 #WORKDIR /gamovibased
 # /usr/src/gamovibased
 
 FROM base as builder
-WORKDIR /$NAME_APP
+WORKDIR /gamovibased
 ENV PIP_DEFAULT_TIMEOUT=100 \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1 \
-    POETRY_VERSION=1.6.1
+    POETRY_VERSION=1.6.1 \
+    NAME_APP="gamovibased" \
+    WORK_DIR="/src" \
+    DJ_PROJ="config"
 
 #RUN apk add --no-cache gcc libffi-dev musl-dev postgresql-dev
 RUN apt-get update && \
@@ -36,17 +39,17 @@ RUN apt-get update && \
     #curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python --version $POETRY_VERSION
 
 
-COPY pyproject.toml poetry.lock /${NAME_APP}/
-COPY ./deploy/entrypoint.sh /${NAME_APP}/deploy/entrypoint.sh
-COPY ./deploy/gunicorn/gunicorn.sh /${NAME_APP}/deploy/gunicorn/gunicorn.sh
-COPY . /${NAME_APP}
+COPY pyproject.toml poetry.lock /gamovibased/
+COPY ./deploy/entrypoint.sh /gamovibased/deploy/entrypoint.sh
+COPY ./deploy/gunicorn/gunicorn.sh /gamovibased/deploy/gunicorn/gunicorn.sh
+COPY . /gamovibased
 # COPY . .
 
 RUN poetry config virtualenvs.in-project false && \
     #poetry config virtualenvs.create false && \
     poetry install --only=main --no-interaction --no-ansi --no-root && \
-    chmod +x /${NAME_APP}/deploy/entrypoint.sh && \
-    chmod +x /${NAME_APP}/deploy/gunicorn/gunicorn.sh
+    chmod +x /gamovibased/deploy/entrypoint.sh && \
+    chmod +x /gamovibased/deploy/gunicorn/gunicorn.sh
 #RUN poetry build && /venv/bin/pip install dist/*.whl
 #    source $VENV_PATH/bin/poetry
 #FROM base as final
@@ -54,5 +57,5 @@ RUN poetry config virtualenvs.in-project false && \
 #WORKDIR /$NAME_APP
 
 
-ENTRYPOINT sh /${NAME_APP}/deploy/entrypoint.sh
+ENTRYPOINT sh /gamovibased/deploy/entrypoint.sh
 #CMD ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]

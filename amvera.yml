@@ -6,6 +6,7 @@ meta:
     version: latest
 build:
   dockerfile: Dockerfile
+  args: - NAME_APP="gamovibased" - WORK_DIR="/src"  - DJ_PROJ="config"
 run:
   persistenceMount: /data
   containerPort: 80
