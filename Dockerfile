@@ -29,8 +29,8 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
     NAME_APP="gamovibased" \
     WORK_DIR="/src" \
     DJ_PROJ="config" \
-    EXTERNAL_WEB_PORT="80"\
-    INTERNAL_WEB_PORT="80" \
+    EXTERNAL_WEB_PORT="8000"\
+    INTERNAL_WEB_PORT="8000" \
     DJANGO_ENV=production
 
 #RUN apk add --no-cache gcc libffi-dev musl-dev postgresql-dev
