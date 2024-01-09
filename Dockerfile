@@ -31,7 +31,7 @@ ENV PIP_DEFAULT_TIMEOUT=100 \
     DJ_PROJ="config" \
     EXTERNAL_WEB_PORT="8000"\
     INTERNAL_WEB_PORT="8000" \
-    DJANGO_ENV=production
+    DJANGO_ENV="production"
 
 #RUN apk add --no-cache gcc libffi-dev musl-dev postgresql-dev
 RUN apt-get update && \

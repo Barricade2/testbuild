@@ -26,7 +26,6 @@ echo "DJANGO_ENV is 1"
 export $(grep -v '^#' src/config/.env | xargs)
 ls -al /gamovibased
 #. /gamovibased/.venv/bin/poetry shell
-. $(poetry env info --path)/bin/activate
 echo "DJANGO_ENV is 2"
 
 python /gamovibased/src/manage.py makemigrations --no-input
