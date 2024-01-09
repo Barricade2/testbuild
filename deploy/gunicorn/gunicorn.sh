@@ -29,19 +29,19 @@ export DJANGO_ENV
 # Running migrations in startup script might not be the best option, see:
 # docs/pages/template/production-checklist.rst
 # Получить данные из файла с переменными окружения
-export $(grep -v '^#' ${WORK_DIR}/${DJ_PROJ}/.env | xargs)
+export $(grep -v '^#' src/config/.env | xargs)
 ls -al /gamovibased
 #. /gamovibased/.venv/bin/poetry shell
 . $(poetry env info --path)/bin/activate
 
-python /${NAME_APP}/${WORK_DIR}/manage.py makemigrations --no-input
-python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input
-python /${NAME_APP}/${WORK_DIR}/manage.py collectstatic --noinput --clear
-python /${NAME_APP}/${WORK_DIR}/manage.py makemessages -l ru
-python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
+python /gamovibased/src/manage.py makemigrations --no-input
+python /gamovibased/src/manage.py migrate --no-input
+python /gamovibased/src/manage.py collectstatic --noinput --clear
+python /gamovibased/src/manage.py makemessages -l ru
+python /gamovibased/src/manage.py compilemessages
 
 # Запустить gunicorn / Run gunicorn
-gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ --config python:deploy.gunicorn.gunicorn_config --timeout 120
+gunicorn --chdir /gamovibased/src/ --config python:deploy.gunicorn.gunicorn_config --timeout 120
 
 #gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ -c $(pwd)/deploy/gunicorn/gunicorn.conf.py
 
