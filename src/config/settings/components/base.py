@@ -106,7 +106,7 @@ DATABASES = {
         'NAME': env("DB_NAME"),
         'USER': env("DB_USER"),
         'PASSWORD': env("DB_PASSWORD"),
-        'HOST':  "dpg-clk56ct8td7s73dbifr0-a",
+        'HOST':  env("DB_HOST"),
         'PORT':  env("DB_PORT"),
     }
 }
