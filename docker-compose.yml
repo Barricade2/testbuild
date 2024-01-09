@@ -20,9 +20,9 @@ services:
             context: .
             dockerfile: Dockerfile
             args:
-                WORK_DIR: "/src"
-                NAME_APP: "gamovibased"
-                DJ_PROJ: "config"
+                WORK_DIR: ${WORK_DIR}
+                NAME_APP: ${NAME_APP}
+                DJ_PROJ: ${DJ_PROJ}
         #command: python manage.py runserver 0.0.0.0:8000
         volumes:
             - .:/gamovibased
