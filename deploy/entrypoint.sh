@@ -3,6 +3,7 @@
 # ENTRYPOINT [ "deploy/entrypoint.sh" ]
 
 #cd /${NAME_APP}/${WORK_DIR}/
+echo "DJANGO_ENV is 0"
 
 export $(grep -v '^#' /src/config/.env | xargs) # .env.prod for production
 export DJANGO_ENV=production # entrypoint.prod.sh for production

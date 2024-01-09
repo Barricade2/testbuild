@@ -16,6 +16,7 @@ set -o nounset
 # from os import environ
 # environ.setdefault("DJANGO_ENV", "production")
 # _ENV = environ["DJANGO_ENV"]
+echo "DJANGO_ENV is 1"
 
 
 # Run python specific scripts:
@@ -26,15 +27,18 @@ export $(grep -v '^#' src/config/.env | xargs)
 ls -al /gamovibased
 #. /gamovibased/.venv/bin/poetry shell
 . $(poetry env info --path)/bin/activate
+echo "DJANGO_ENV is 2"
 
 python /gamovibased/src/manage.py makemigrations --no-input
 python /gamovibased/src/manage.py migrate --no-input
 python /gamovibased/src/manage.py collectstatic --noinput --clear
 python /gamovibased/src/manage.py makemessages -l ru
 python /gamovibased/src/manage.py compilemessages
+echo "DJANGO_ENV is 3"
 
 # Запустить gunicorn / Run gunicorn
 gunicorn --chdir /gamovibased/src/ --config python:deploy.gunicorn.gunicorn_config --timeout 120
+echo "DJANGO_ENV is 4"
 
 #gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ -c $(pwd)/deploy/gunicorn/gunicorn.conf.py
 
