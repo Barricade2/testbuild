@@ -3,7 +3,7 @@ from config.settings.components import env
 
 DEBUG = False
 print("prod")
-ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
