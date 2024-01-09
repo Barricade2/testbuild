@@ -17,7 +17,7 @@ set -o nounset
 # environ.setdefault("DJANGO_ENV", "production")
 # _ENV = environ["DJANGO_ENV"]
 echo "DJANGO_ENV is $DJANGO_ENV"
-if [ "$DJANGO_ENV" != 'production' ]; then
+if [ 'production' != 'production' ]; then
   echo 'Error: DJANGO_ENV is not set to "production".'
   echo 'Application will not start.'
   exit 1
