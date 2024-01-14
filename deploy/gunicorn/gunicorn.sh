@@ -31,13 +31,17 @@ export DJANGO_ENV
 # docs/pages/template/production-checklist.rst
 # Получить данные из файла с переменными окружения
 export $(grep -v '^#' /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env | xargs)
-export $(grep -v '^#' /data/IS_DEPLOY.txt | xargs)
+#export $(grep -v '^#' /data/IS_DEPLOY.txt | xargs)
 ls -al /gamovibased
 #. /gamovibased/.venv/bin/poetry shell
 . $(poetry env info --path)/bin/activate
 echo "DJANGO_ENV is 2"
 
 if [ -f /${NAME_APP}/IS_DEPLOY.txt ] ; then
+  python /${NAME_APP}/${WORK_DIR}/manage.py makemigrations --no-input
+  python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input
+  python /${NAME_APP}/${WORK_DIR}/manage.py makemessages -l ru
+  python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
   echo "IS_DEPLOY is 1"
 fi
 
@@ -55,7 +59,7 @@ echo "DJANGO_ENV is 3"
 # echo "IS_DEPLOY=0" > /data/IS_DEPLOY.txt && . /data/IS_DEPLOY.txt
 rm -rf /${NAME_APP}/IS_DEPLOY.txt
 
-
+gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ --config python:deploy.gunicorn.gunicorn_config --timeout 120
 # Запустить gunicorn / Run gunicorn
 echo "DJANGO_ENV is 4"
 
