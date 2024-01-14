@@ -35,10 +35,9 @@ ls -al /gamovibased
 #. /gamovibased/.venv/bin/poetry shell
 . $(poetry env info --path)/bin/activate
 echo "DJANGO_ENV is 2"
-echo "IS_DEPLOY is $IS_DEPLOY ${IS_DEPLOY}"
 
-if [ $IS_DEPLOY -eq 1 ]; then
-  echo "IS_DEPLOY is $IS_DEPLOY"
+if [ $IS_DEPLOY || 1 -eq 1 ]; then
+  echo "IS_DEPLOY is 1"
 fi
 echo "DJANGO_ENV is 3"
 echo "export IS_DEPLOY=0" >> /etc/environment && . /etc/environment
