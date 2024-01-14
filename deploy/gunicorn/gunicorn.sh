@@ -31,6 +31,7 @@ export DJANGO_ENV
 # docs/pages/template/production-checklist.rst
 # Получить данные из файла с переменными окружения
 export $(grep -v '^#' /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env | xargs)
+export $(grep -v '^#' /data/txt.txt | xargs)
 ls -al /gamovibased
 #. /gamovibased/.venv/bin/poetry shell
 . $(poetry env info --path)/bin/activate
