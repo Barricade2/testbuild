@@ -24,11 +24,11 @@ ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:/root/.poetry/bin:/root/.local/bin/:$P
 WORKDIR /$NAME_APP
 #WORKDIR /gamovibased
 # /usr/src/gamovibased
-RUN echo "IS_DEPLOY=1" > /$NAME_APP/IS_DEPLOY2.txt
 
+#RUN echo "IS_DEPLOY=1" > /$NAME_APP/IS_DEPLOY2.txt
 
-FROM scratch  AS export-stage
-COPY --from=base /gamovibased/IS_DEPLOY2.txt /data/IS_DEPLOY2.txt/
+#FROM scratch  AS export-stage
+#COPY --from=base /gamovibased/IS_DEPLOY2.txt /data/IS_DEPLOY2.txt/
 
 FROM base as builder
 WORKDIR /$NAME_APP
@@ -55,7 +55,8 @@ RUN poetry config virtualenvs.in-project false && \
     #poetry config virtualenvs.create false && \
     poetry install --only=main --no-interaction --no-ansi --no-root && \
     chmod +x /${NAME_APP}/deploy/entrypoint.sh && \
-    chmod +x /${NAME_APP}/deploy/gunicorn/gunicorn.sh
+    chmod +x /${NAME_APP}/deploy/gunicorn/gunicorn.sh \
+    echo "IS_DEPLOY=1" > /$NAME_APP/IS_DEPLOY.txt
 #RUN poetry build && /venv/bin/pip install dist/*.whl
 #    source $VENV_PATH/bin/poetry
 #FROM base as final

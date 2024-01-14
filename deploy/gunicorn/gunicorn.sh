@@ -37,18 +37,21 @@ ls -al /gamovibased
 . $(poetry env info --path)/bin/activate
 echo "DJANGO_ENV is 2"
 
+
 if [ ${IS_DEPLOY-1} -eq 1 ]; then
   echo "IS_DEPLOY is 1"
 fi
 echo "DJANGO_ENV is 3"
-echo "export IS_DEPLOY=0" >> /etc/environment && . /etc/environment
-echo "IS_DEPLOY is $IS_DEPLOY end"
+#cho "export IS_DEPLOY=0" >> /etc/environment && . /etc/environment
+#echo "IS_DEPLOY is $IS_DEPLOY end"
 
-echo "export IS_DEPLOY="0"" >> ~/.bashrc && . ~/.bashrc
-echo "IS_DEPLOY is $IS_DEPLOY end 2"
+#echo "export IS_DEPLOY="0"" >> ~/.bashrc && . ~/.bashrc
+#echo "IS_DEPLOY is $IS_DEPLOY end 2"
 
-echo "IS_DEPLOY=0" >> /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env && . /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env
-echo "IS_DEPLOY=0" > /data/IS_DEPLOY.txt && . /data/IS_DEPLOY.txt
+# echo "IS_DEPLOY=0" >> /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env && . /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env
+# echo "IS_DEPLOY=0" > /data/IS_DEPLOY.txt && . /data/IS_DEPLOY.txt
+rm -rf /${NAME_APP}/IS_DEPLOY.txt
+
 
 # Запустить gunicorn / Run gunicorn
 echo "DJANGO_ENV is 4"
