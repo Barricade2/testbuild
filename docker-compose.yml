@@ -23,7 +23,7 @@ services:
                 WORK_DIR: ${WORK_DIR}
                 NAME_APP: ${NAME_APP}
                 DJ_PROJ: ${DJ_PROJ}
-        #command: python manage.py runserver 0.0.0.0:8000
+        command: echo "CCCCCCCCCCCCCCCComand"
         volumes:
             - .:/gamovibased
         ports:

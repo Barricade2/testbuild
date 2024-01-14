@@ -26,7 +26,8 @@ WORKDIR /$NAME_APP
 # /usr/src/gamovibased
 RUN echo "IS_DEPLOY=1" > /$NAME_APP/IS_DEPLOY2.txt
 
-FROM scratch  AS artifact
+
+FROM scratch  AS export-stage
 COPY --from=base /gamovibased/IS_DEPLOY2.txt /data/IS_DEPLOY2.txt/
 
 FROM base as builder
@@ -60,7 +61,6 @@ RUN poetry config virtualenvs.in-project false && \
 #FROM base as final
 #COPY --from=builder /$NAME_APP /$NAME_APP
 #WORKDIR /$NAME_APP
-RUN echo "IS_DEPLOY=1" > /data/IS_DEPLOY2.txt
 
 ENTRYPOINT sh /${NAME_APP}/deploy/entrypoint.sh
 #CMD ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
