@@ -24,11 +24,6 @@ ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:/root/.poetry/bin:/root/.local/bin/:$P
 WORKDIR /$NAME_APP
 #WORKDIR /gamovibased
 # /usr/src/gamovibased
-RUN echo "IS_DEPLOY=0" > /$NAME_APP/IS_DEPLOY.txt
-
-
-FROM scratch AS export-stage
-COPY --from=base /$NAME_APP/IS_DEPLOY.txt .
 
 
 FROM base as builder
@@ -46,6 +41,7 @@ RUN apt-get update && \
     pip install "poetry==$POETRY_VERSION"
     #curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python --version $POETRY_VERSION
 
+RUN echo "IS_DEPLOY=0" > /$NAME_APP/IS_DEPLOY.txt
 
 COPY pyproject.toml poetry.lock /${NAME_APP}/
 COPY ./deploy/entrypoint.sh /${NAME_APP}/deploy/entrypoint.sh
@@ -63,6 +59,9 @@ RUN poetry config virtualenvs.in-project false && \
 #FROM base as final
 #COPY --from=builder /$NAME_APP /$NAME_APP
 #WORKDIR /$NAME_APP
+
+FROM base AS export
+COPY --from=builder /$NAME_APP/IS_DEPLOY.txt /data/IS_DEPLOY.txt
 
 
 ENTRYPOINT sh /${NAME_APP}/deploy/entrypoint.sh
