@@ -37,7 +37,7 @@ ls -al /gamovibased
 echo "DJANGO_ENV is 2"
 echo "IS_DEPLOY is $IS_DEPLOY"
 
-if [ $IS_DEPLOY == 1 ]; then
+if [ $IS_DEPLOY -eq 1 ]; then
   python /${NAME_APP}/${WORK_DIR}/manage.py makemigrations --no-input
   python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input
   python /${NAME_APP}/${WORK_DIR}/manage.py collectstatic --noinput --clear
