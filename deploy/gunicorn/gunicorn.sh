@@ -63,6 +63,8 @@ if [ -f /${NAME_APP}/IS_DEPLOY.txt ] ; then
   echo "IS_DEPLOY is -f"
 fi
 
+ls -al /gamovibased
+
 gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ --config python:deploy.gunicorn.gunicorn_config --timeout 120
 # Запустить gunicorn / Run gunicorn
 echo "DJANGO_ENV is 4"
