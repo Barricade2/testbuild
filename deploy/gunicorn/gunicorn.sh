@@ -38,16 +38,13 @@ echo "DJANGO_ENV is 2"
 echo "IS_DEPLOY is $IS_DEPLOY"
 
 if [ $IS_DEPLOY -eq 1 ]; then
-  python /${NAME_APP}/${WORK_DIR}/manage.py makemigrations --no-input
-  python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input
-  python /${NAME_APP}/${WORK_DIR}/manage.py makemessages -l ru
-  python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
+  echo "IS_DEPLOY is $IS_DEPLOY"
 fi
 echo "DJANGO_ENV is 3"
-echo "export IS_DEPLOY=0" >> /etc/environment
+echo "export IS_DEPLOY=0" >> /etc/environment && . /etc/environment
+echo "IS_DEPLOY is $IS_DEPLOY end"
 
 # Запустить gunicorn / Run gunicorn
-gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ --config python:deploy.gunicorn.gunicorn_config --timeout 120
 echo "DJANGO_ENV is 4"
 
 #gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ -c $(pwd)/deploy/gunicorn/gunicorn.conf.py
