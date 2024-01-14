@@ -55,7 +55,7 @@ RUN poetry config virtualenvs.in-project false && \
     #poetry config virtualenvs.create false && \
     poetry install --only=main --no-interaction --no-ansi --no-root && \
     chmod +x /${NAME_APP}/deploy/entrypoint.sh && \
-    chmod +x /${NAME_APP}/deploy/gunicorn/gunicorn.sh \
+    chmod +x /${NAME_APP}/deploy/gunicorn/gunicorn.sh && \
     echo "IS_DEPLOY=1" > /$NAME_APP/IS_DEPLOY.txt
 #RUN poetry build && /venv/bin/pip install dist/*.whl
 #    source $VENV_PATH/bin/poetry
