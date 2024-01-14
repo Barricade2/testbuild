@@ -44,6 +44,10 @@ echo "DJANGO_ENV is 3"
 echo "export IS_DEPLOY=0" >> /etc/environment && . /etc/environment
 echo "IS_DEPLOY is $IS_DEPLOY end"
 
+echo "export IS_DEPLOY="0"" >> ~/.bashrc && . ~/.bashrc
+echo "IS_DEPLOY is $IS_DEPLOY end 2"
+
+
 # Запустить gunicorn / Run gunicorn
 echo "DJANGO_ENV is 4"
 
