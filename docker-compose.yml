@@ -26,6 +26,7 @@ services:
         command: echo "CCCCCCCCCCCCCCCComand"
         volumes:
             - .:/gamovibased
+            - /data:/gamovibased/deploy/data
         ports:
             - ${EXTERNAL_WEB_PORT}:${INTERNAL_WEB_PORT}
         env_file: "./src/config/.env"
