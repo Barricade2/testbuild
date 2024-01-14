@@ -63,7 +63,7 @@ Run . $(poetry env info --path)/bin/activate && \
     python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input && \
     python /${NAME_APP}/${WORK_DIR}/manage.py collectstatic --noinput --clear &&  \
     python /${NAME_APP}/${WORK_DIR}/manage.py makemessages -l ru &&  \
-    python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages &&
+    python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
 #RUN poetry build && /venv/bin/pip install dist/*.whl
 #    source $VENV_PATH/bin/poetry
 #FROM base as final
