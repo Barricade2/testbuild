@@ -35,13 +35,17 @@ ls -al /gamovibased
 #. /gamovibased/.venv/bin/poetry shell
 . $(poetry env info --path)/bin/activate
 echo "DJANGO_ENV is 2"
+echo "IS_DEPLOY is $IS_DEPLOY"
 
-python /${NAME_APP}/${WORK_DIR}/manage.py makemigrations --no-input
-python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input
-python /${NAME_APP}/${WORK_DIR}/manage.py collectstatic --noinput --clear
-python /${NAME_APP}/${WORK_DIR}/manage.py makemessages -l ru
-python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
+if [ $IS_DEPLOY == true ]; then
+  python /${NAME_APP}/${WORK_DIR}/manage.py makemigrations --no-input
+  python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input
+  python /${NAME_APP}/${WORK_DIR}/manage.py collectstatic --noinput --clear
+  python /${NAME_APP}/${WORK_DIR}/manage.py makemessages -l ru
+  python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
+fi
 echo "DJANGO_ENV is 3"
+export IS_DEPLOY=false
 
 # Запустить gunicorn / Run gunicorn
 gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ --config python:deploy.gunicorn.gunicorn_config --timeout 120
