@@ -45,7 +45,7 @@ if [ $IS_DEPLOY -eq 1 ]; then
   python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
 fi
 echo "DJANGO_ENV is 3"
-export IS_DEPLOY=0
+echo "export IS_DEPLOY=0" >> /etc/environment && source /etc/environment
 
 # Запустить gunicorn / Run gunicorn
 gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ --config python:deploy.gunicorn.gunicorn_config --timeout 120
