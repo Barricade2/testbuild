@@ -12,7 +12,7 @@ ENV PYTHONFAULTHANDLER=1 \
     DJ_PROJ="config" \
     EXTERNAL_WEB_PORT="80"\
     INTERNAL_WEB_PORT="80"\
-    IS_DEPLOY=true
+    IS_DEPLOY=1
     # make poetry install to this location
     #POETRY_HOME="/gamovibased/poetry" \
     # make poetry create the virtual environment in the project's root
