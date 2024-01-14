@@ -25,6 +25,12 @@ WORKDIR /$NAME_APP
 #WORKDIR /gamovibased
 # /usr/src/gamovibased
 
+RUN echo "IS_DEPLOY=0" > deploy/IS_DEPLOY.txt
+
+FROM scratch AS export-stage
+COPY --from=base /$NAME_APP/deploy/IS_DEPLOY.txt /data
+
+
 FROM base as builder
 WORKDIR /$NAME_APP
 ENV PIP_DEFAULT_TIMEOUT=100 \
@@ -44,7 +50,6 @@ RUN apt-get update && \
 COPY pyproject.toml poetry.lock /${NAME_APP}/
 COPY ./deploy/entrypoint.sh /${NAME_APP}/deploy/entrypoint.sh
 COPY ./deploy/gunicorn/gunicorn.sh /${NAME_APP}/deploy/gunicorn/gunicorn.sh
-COPY ./deploy/IS_DEPLOY.txt /data/IS_DEPLOY.txt
 COPY . /${NAME_APP}
 # COPY . .
 
