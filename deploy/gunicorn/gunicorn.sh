@@ -40,7 +40,6 @@ echo "DJANGO_ENV is 2"
 if [ -f /${NAME_APP}/IS_DEPLOY.txt ] ; then
   python /${NAME_APP}/${WORK_DIR}/manage.py makemigrations --no-input
   python /${NAME_APP}/${WORK_DIR}/manage.py migrate --no-input
-  python /${NAME_APP}/${WORK_DIR}/manage.py collectstatic --noinput --clear
   python /${NAME_APP}/${WORK_DIR}/manage.py makemessages -l ru
   python /${NAME_APP}/${WORK_DIR}/manage.py compilemessages
   echo "IS_DEPLOY is 1"
