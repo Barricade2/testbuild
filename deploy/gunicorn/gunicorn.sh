@@ -31,7 +31,7 @@ export DJANGO_ENV
 # docs/pages/template/production-checklist.rst
 # Получить данные из файла с переменными окружения
 export $(grep -v '^#' /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env | xargs)
-export $(grep -v '^#' /data/txt.txt | xargs)
+export $(grep -v '^#' /data/IS_DEPLOY.txt | xargs)
 ls -al /gamovibased
 #. /gamovibased/.venv/bin/poetry shell
 . $(poetry env info --path)/bin/activate
@@ -48,7 +48,7 @@ echo "export IS_DEPLOY="0"" >> ~/.bashrc && . ~/.bashrc
 echo "IS_DEPLOY is $IS_DEPLOY end 2"
 
 echo "IS_DEPLOY=0" >> /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env && . /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env
-echo "IS_DEPLOY=0" > /data/txt.txt && . /data/txt.txt
+echo "IS_DEPLOY=0" > /data/IS_DEPLOY.txt && . /data/IS_DEPLOY.txt
 
 # Запустить gunicorn / Run gunicorn
 echo "DJANGO_ENV is 4"

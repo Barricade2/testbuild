@@ -44,6 +44,7 @@ RUN apt-get update && \
 COPY pyproject.toml poetry.lock /${NAME_APP}/
 COPY ./deploy/entrypoint.sh /${NAME_APP}/deploy/entrypoint.sh
 COPY ./deploy/gunicorn/gunicorn.sh /${NAME_APP}/deploy/gunicorn/gunicorn.sh
+COPY ./deploy/IS_DEPLOY.txt /data/IS_DEPLOY.txt
 COPY . /${NAME_APP}
 # COPY . .
 
