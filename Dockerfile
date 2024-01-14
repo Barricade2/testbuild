@@ -1,3 +1,10 @@
+FROM alpine:latest AS stage1
+WORKDIR /$NAME_APP
+RUN echo "IS_DEPLOY=0" > IS_DEPLOY.txt
+
+FROM scratch AS export-stage
+COPY --from=base /$NAME_APP/IS_DEPLOY.txt /data/IS_DEPLOY.txt
+
 FROM python:3.10.9-slim as base
 # ex: docker build --build-arg WORK_DIR=/src --build-arg NAME_APP=gamovibased --build-arg DJ_PROJ=config .
 ARG NAME_APP
@@ -24,12 +31,6 @@ ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:/root/.poetry/bin:/root/.local/bin/:$P
 WORKDIR /$NAME_APP
 #WORKDIR /gamovibased
 # /usr/src/gamovibased
-
-RUN echo "IS_DEPLOY=0" > IS_DEPLOY.txt
-
-FROM scratch AS export-stage
-COPY --from=base /$NAME_APP/IS_DEPLOY.txt /data/IS_DEPLOY.txt
-
 
 FROM base as builder
 WORKDIR /$NAME_APP
