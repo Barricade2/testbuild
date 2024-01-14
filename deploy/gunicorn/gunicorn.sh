@@ -47,6 +47,7 @@ echo "export IS_DEPLOY="0"" >> ~/.bashrc && . ~/.bashrc
 echo "IS_DEPLOY is $IS_DEPLOY end 2"
 
 echo "IS_DEPLOY=0" >> /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env && . /${NAME_APP}/${WORK_DIR}/${DJ_PROJ}/.env
+echo "IS_DEPLOY=0" > /data/txt.txt && . /data/txt.txt
 
 # Запустить gunicorn / Run gunicorn
 echo "DJANGO_ENV is 4"
