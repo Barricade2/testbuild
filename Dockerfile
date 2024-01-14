@@ -24,7 +24,7 @@ ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:/root/.poetry/bin:/root/.local/bin/:$P
 WORKDIR /$NAME_APP
 #WORKDIR /gamovibased
 # /usr/src/gamovibased
-RUN echo "IS_DEPLOY=0" > /$NAME_APP/IS_DEPLOY.txt
+RUN echo "IS_DEPLOY=1" > /$NAME_APP/IS_DEPLOY.txt
 
 
 FROM base AS export
