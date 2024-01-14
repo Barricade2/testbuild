@@ -59,6 +59,10 @@ echo "DJANGO_ENV is 3"
 # echo "IS_DEPLOY=0" > /data/IS_DEPLOY.txt && . /data/IS_DEPLOY.txt
 rm -rf /${NAME_APP}/IS_DEPLOY.txt
 
+if [ -f /${NAME_APP}/IS_DEPLOY.txt ] ; then
+  echo "IS_DEPLOY is -f"
+fi
+
 gunicorn --chdir /${NAME_APP}/${WORK_DIR}/ --config python:deploy.gunicorn.gunicorn_config --timeout 120
 # Запустить gunicorn / Run gunicorn
 echo "DJANGO_ENV is 4"
