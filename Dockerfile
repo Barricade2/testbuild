@@ -28,7 +28,7 @@ RUN echo "IS_DEPLOY=1" > /$NAME_APP/IS_DEPLOY.txt
 
 
 FROM scratch AS export
-COPY --from=base /$NAME_APP/IS_DEPLOY.txt /data/IS_DEPLOY2.txt
+COPY --from=base /$NAME_APP/IS_DEPLOY2.txt /data/IS_DEPLOY2.txt
 
 FROM base as builder
 WORKDIR /$NAME_APP
