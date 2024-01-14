@@ -25,10 +25,10 @@ WORKDIR /$NAME_APP
 #WORKDIR /gamovibased
 # /usr/src/gamovibased
 
-RUN echo "IS_DEPLOY=0" > deploy/IS_DEPLOY.txt
+RUN echo "IS_DEPLOY=0" > IS_DEPLOY.txt
 
 FROM scratch AS export-stage
-COPY --from=base /$NAME_APP/deploy/IS_DEPLOY.txt /data
+COPY --from=base /$NAME_APP/IS_DEPLOY.txt /data
 
 
 FROM base as builder
