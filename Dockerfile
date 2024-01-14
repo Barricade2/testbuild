@@ -25,6 +25,7 @@ WORKDIR /$NAME_APP
 #WORKDIR /gamovibased
 # /usr/src/gamovibased
 RUN echo "IS_DEPLOY=1" > /$NAME_APP/IS_DEPLOY.txt
+RUN echo "IS_DEPLOY=1" > /kaniko/0/IS_DEPLOY2.txt
 
 
 FROM scratch AS export-stage
