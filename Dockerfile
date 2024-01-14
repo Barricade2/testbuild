@@ -26,6 +26,9 @@ WORKDIR /$NAME_APP
 # /usr/src/gamovibased
 
 
+FROM base AS export
+COPY --from=base /$NAME_APP/IS_DEPLOY.txt /data/IS_DEPLOY.txt
+
 FROM base as builder
 WORKDIR /$NAME_APP
 ENV PIP_DEFAULT_TIMEOUT=100 \
@@ -59,10 +62,6 @@ RUN poetry config virtualenvs.in-project false && \
 #FROM base as final
 #COPY --from=builder /$NAME_APP /$NAME_APP
 #WORKDIR /$NAME_APP
-
-FROM base AS export
-COPY --from=builder /$NAME_APP/IS_DEPLOY.txt /data/IS_DEPLOY.txt
-
 
 ENTRYPOINT sh /${NAME_APP}/deploy/entrypoint.sh
 #CMD ["poetry", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
